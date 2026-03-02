@@ -1,1 +1,81 @@
-import{a as p}from"./39.js";import{Cb as d,Db as c,Eb as m,fb as a,ha as C,ia as o,jb as r,rb as l,wb as s}from"./33.js";var v=(()=>{class t extends p{static \u0275fac=(()=>{let i;return function(e){return(i||(i=o(t)))(e||t)}})();static \u0275cmp=a({type:t,selectors:[["EyeIcon"]],features:[r],decls:2,vars:5,consts:[["width","14","height","14","viewBox","0 0 14 14","fill","none","xmlns","http://www.w3.org/2000/svg"],["fill-rule","evenodd","clip-rule","evenodd","d","M0.0535499 7.25213C0.208567 7.59162 2.40413 12.4 7 12.4C11.5959 12.4 13.7914 7.59162 13.9465 7.25213C13.9487 7.2471 13.9506 7.24304 13.952 7.24001C13.9837 7.16396 14 7.08239 14 7.00001C14 6.91762 13.9837 6.83605 13.952 6.76001C13.9506 6.75697 13.9487 6.75292 13.9465 6.74788C13.7914 6.4084 11.5959 1.60001 7 1.60001C2.40413 1.60001 0.208567 6.40839 0.0535499 6.74788C0.0512519 6.75292 0.0494023 6.75697 0.048 6.76001C0.0163137 6.83605 0 6.91762 0 7.00001C0 7.08239 0.0163137 7.16396 0.048 7.24001C0.0494023 7.24304 0.0512519 7.2471 0.0535499 7.25213ZM7 11.2C3.664 11.2 1.736 7.92001 1.264 7.00001C1.736 6.08001 3.664 2.80001 7 2.80001C10.336 2.80001 12.264 6.08001 12.736 7.00001C12.264 7.92001 10.336 11.2 7 11.2ZM5.55551 9.16182C5.98308 9.44751 6.48576 9.6 7 9.6C7.68891 9.59789 8.349 9.32328 8.83614 8.83614C9.32328 8.349 9.59789 7.68891 9.59999 7C9.59999 6.48576 9.44751 5.98308 9.16182 5.55551C8.87612 5.12794 8.47006 4.7947 7.99497 4.59791C7.51988 4.40112 6.99711 4.34963 6.49276 4.44995C5.98841 4.55027 5.52513 4.7979 5.16152 5.16152C4.7979 5.52513 4.55027 5.98841 4.44995 6.49276C4.34963 6.99711 4.40112 7.51988 4.59791 7.99497C4.7947 8.47006 5.12794 8.87612 5.55551 9.16182ZM6.2222 5.83594C6.45243 5.6821 6.7231 5.6 7 5.6C7.37065 5.6021 7.72553 5.75027 7.98762 6.01237C8.24972 6.27446 8.39789 6.62934 8.4 7C8.4 7.27689 8.31789 7.54756 8.16405 7.77779C8.01022 8.00802 7.79157 8.18746 7.53575 8.29343C7.27994 8.39939 6.99844 8.42711 6.72687 8.37309C6.4553 8.31908 6.20584 8.18574 6.01005 7.98994C5.81425 7.79415 5.68091 7.54469 5.6269 7.27312C5.57288 7.00155 5.6006 6.72006 5.70656 6.46424C5.81253 6.20842 5.99197 5.98977 6.2222 5.83594Z","fill","currentColor"]],template:function(n,e){n&1&&(C(),d(0,"svg",0),m(1,"path",1),c()),n&2&&(s(e.getClassNames()),l("aria-label",e.ariaLabel)("aria-hidden",e.ariaHidden)("role",e.role))},encapsulation:2})}return t})();export{v as a};
+import{Ea as s,Ha as P,Ka as R,j as k,m as N,u as H}from"./42.js";import{Cb as f,Db as u,Eb as T,Ib as D,Mb as F,Nb as i,Ob as L,Pb as j,Qa as I,T as x,Ta as g,U as _,Yb as d,Z as y,Zb as A,_b as S,ec as V,fa as b,fb as C,ga as z,gb as w,ia as c,jb as E,kb as l,oa as $,oc as h,rb as v,sb as n,ub as M,vb as B,wb as m}from"./35.js";var O=["*"];function U(a,o){if(a&1&&(f(0,"span",3),A(1),u()),a&2){let e=i();g(),S(e.label)}}function G(a,o){if(a&1&&T(0,"span",5),a&2){let e=i(2);m(e.icon),n("ngClass","p-avatar-icon")}}function J(a,o){if(a&1&&l(0,G,1,3,"span",4),a&2){let e=i(),r=d(5);n("ngIf",e.icon)("ngIfElse",r)}}function K(a,o){if(a&1){let e=D();f(0,"img",7),F("error",function(t){b(e);let p=i(2);return z(p.imageError(t))}),u()}if(a&2){let e=i(2);n("src",e.image,I),v("aria-label",e.ariaLabel)}}function Q(a,o){if(a&1&&l(0,K,1,2,"img",6),a&2){let e=i();n("ngIf",e.image)}}var W=({dt:a})=>`
+.p-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: ${a("avatar.width")};
+    height: ${a("avatar.height")};
+    font-size: ${a("avatar.font.size")};
+    color: ${a("avatar.color")};
+    background: ${a("avatar.background")};
+    border-radius: ${a("avatar.border.radius")};
+}
+
+.p-avatar-image {
+    background: transparent;
+}
+
+.p-avatar-circle {
+    border-radius: 50%;
+}
+
+.p-avatar-circle img {
+    border-radius: 50%;
+}
+
+.p-avatar-icon {
+    font-size: ${a("avatar.icon.size")};
+    width: ${a("avatar.icon.size")};
+    height: ${a("avatar.icon.size")};
+}
+
+.p-avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+.p-avatar-lg {
+    width: ${a("avatar.lg.width")};
+    height: ${a("avatar.lg.width")};
+    font-size: ${a("avatar.lg.font.size")};
+}
+
+.p-avatar-lg .p-avatar-icon {
+    font-size: ${a("avatar.lg.icon.size")};
+    width: ${a("avatar.lg.icon.size")};
+    height: ${a("avatar.lg.icon.size")};
+}
+
+.p-avatar-xl {
+    width: ${a("avatar.xl.width")};
+    height: ${a("avatar.xl.width")};
+    font-size: ${a("avatar.xl.font.size")};
+}
+
+.p-avatar-xl .p-avatar-icon {
+    font-size: ${a("avatar.xl.font.size")};
+    width: ${a("avatar.xl.icon.size")};
+    height: ${a("avatar.xl.icon.size")};
+}
+
+.p-avatar-group {
+    display: flex;
+    align-items: center;
+}
+
+.p-avatar-group .p-avatar + .p-avatar {
+    margin-inline-start: ${a("avatar.group.offset")};
+}
+
+.p-avatar-group .p-avatar {
+    border: 2px solid ${a("avatar.group.border.color")};
+}
+
+.p-avatar-group .p-avatar-lg + .p-avatar-lg {
+    margin-inline-start: ${a("avatar.lg.group.offset")};
+}
+
+.p-avatar-group .p-avatar-xl + .p-avatar-xl {
+    margin-inline-start: ${a("avatar.xl.group.offset")};
+}
+`,X={root:({props:a})=>["p-avatar p-component",{"p-avatar-image":a.image!=null,"p-avatar-circle":a.shape==="circle","p-avatar-lg":a.size==="large","p-avatar-xl":a.size==="xlarge"}],label:"p-avatar-label",icon:"p-avatar-icon"},q=(()=>{class a extends P{name="avatar";theme=W;classes=X;static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275prov=x({token:a,factory:a.\u0275fac})}return a})();var Y=(()=>{class a extends R{label;icon;image;size="normal";shape="square";style;styleClass;ariaLabel;ariaLabelledBy;onImageError=new $;_componentStyle=y(q);imageError(e){this.onImageError.emit(e)}get hostClass(){return this.styleClass}static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275cmp=C({type:a,selectors:[["p-avatar"]],hostVars:19,hostBindings:function(r,t){r&2&&(v("data-pc-name","avatar")("aria-label",t.ariaLabel)("aria-labelledby",t.ariaLabelledBy),B(t.style),m(t.hostClass),M("p-avatar",!0)("p-component",!0)("p-avatar-circle",t.shape==="circle")("p-avatar-lg",t.size==="large")("p-avatar-xl",t.size==="xlarge")("p-avatar-image",t.image!=null))},inputs:{label:"label",icon:"icon",image:"image",size:"size",shape:"shape",style:"style",styleClass:"styleClass",ariaLabel:"ariaLabel",ariaLabelledBy:"ariaLabelledBy"},outputs:{onImageError:"onImageError"},features:[V([q]),E],ngContentSelectors:O,decls:6,vars:2,consts:[["iconTemplate",""],["imageTemplate",""],["class","p-avatar-text",4,"ngIf","ngIfElse"],[1,"p-avatar-text"],[3,"class","ngClass",4,"ngIf","ngIfElse"],[3,"ngClass"],[3,"src","error",4,"ngIf"],[3,"error","src"]],template:function(r,t){if(r&1&&(L(),j(0),l(1,U,2,1,"span",2)(2,J,1,2,"ng-template",null,0,h)(4,Q,1,1,"ng-template",null,1,h)),r&2){let p=d(3);g(),n("ngIf",t.label)("ngIfElse",p)}},dependencies:[H,k,N,s],encapsulation:2,changeDetection:0})}return a})(),fa=(()=>{class a{static \u0275fac=function(r){return new(r||a)};static \u0275mod=w({type:a});static \u0275inj=_({imports:[Y,s,s]})}return a})();export{Y as a,fa as b};

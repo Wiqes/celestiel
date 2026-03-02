@@ -1,1 +1,671 @@
-import{a as fe,b as ue}from"./46.js";import{b as me}from"./28.js";import"./2.js";import{c as te}from"./4.js";import"./7.js";import{f as Z}from"./8.js";import{b as he}from"./18.js";import{a as ce,b as le,c as de,d as pe}from"./35.js";import{b as ne,e as ie,h as re,k as oe,p as ae}from"./26.js";import"./24.js";import"./37.js";import{d as se,e as E,f as D}from"./52.js";import{c as T,d as B}from"./17.js";import{a as ge}from"./42.js";import{b as q,c as ee}from"./38.js";import"./49.js";import{l as W,m as X}from"./40.js";import{$b as I,A as j,Ab as J,Bb as K,C as N,Cb as i,Db as r,Eb as p,F as L,Ib as P,Mb as u,Nb as l,O as Y,P as S,Q as G,Ta as a,Z as v,Zb as d,_b as _,a as $,ac as Q,b as A,fa as m,fb as x,ga as h,k as w,kb as g,lc as C,mc as M,o as R,ra as y,sb as f,ua as k,ub as H,yb as O,zc as b}from"./33.js";var z=class n{cleared=y();onClear(){this.cleared.emit()}static \u0275fac=function(e){return new(e||n)};static \u0275cmp=x({type:n,selectors:[["app-clear-button"]],outputs:{cleared:"cleared"},decls:2,vars:0,consts:[["type","button",1,"clear-btn",3,"click"],[1,"pi","pi-times"]],template:function(e,o){e&1&&(i(0,"button",0),u("click",function(){return o.onClear()}),p(1,"i",1),r())},styles:[".clear-btn[_ngcontent-%COMP%]{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff9;cursor:pointer;padding:.25rem;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s ease-in-out;z-index:2}.clear-btn[_ngcontent-%COMP%]:hover{color:#fff;background:#34f5dd1a}.clear-btn[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:.875rem}"]})};var Oe=(n,t)=>t.id;function Pe(n,t){if(n&1){let e=P();i(0,"app-clear-button",5),u("cleared",function(){m(e);let s=l();return h(s.clearSearch())}),r()}}function be(n,t){n&1&&(i(0,"div",6),p(1,"i",9),i(2,"span"),d(3),C(4,"translate"),r()()),n&2&&(a(3),_(M(4,1,"Searching...")))}function we(n,t){if(n&1){let e=P();i(0,"div",11),u("click",function(){let s=m(e).$implicit,c=l(3);return h(c.selectUser(s.id))})("keydown.enter",function(){let s=m(e).$implicit,c=l(3);return h(c.selectUser(s.id))})("keydown.space",function(){let s=m(e).$implicit,c=l(3);return h(c.selectUser(s.id))}),i(1,"div",12),p(2,"i",13),r(),i(3,"div",14)(4,"div",15),d(5),r()(),p(6,"i",16),r()}if(n&2){let e=t.$implicit;a(5),_(e.name)}}function Se(n,t){if(n&1&&(i(0,"div",7),J(1,we,7,1,"div",10,Oe),r()),n&2){let e=l(2);a(),K(e.searchResults())}}function ye(n,t){n&1&&(i(0,"div",8),p(1,"i",17),i(2,"span"),d(3),C(4,"translate"),r()()),n&2&&(a(3),_(M(4,1,"No users found")))}function ke(n,t){if(n&1&&(i(0,"div",4),g(1,be,5,3,"div",6)(2,Se,3,0,"div",7)(3,ye,5,3,"div",8),r()),n&2){let e=l();a(),O(e.isSearching()?1:e.searchResults().length>0?2:3)}}var F=class n{dataAccessService=v(q);destroy$=new w;userSelected=y();searchControl=new re("");searchResults=k([]);isSearching=k(!1);showSearchResults=k(!1);constructor(){this.searchControl.valueChanges.pipe(S(this.destroy$),L(),G(t=>{!t||t.trim().length<2?(this.showSearchResults.set(!1),this.searchResults.set([]),this.isSearching.set(!1)):(this.isSearching.set(!0),this.showSearchResults.set(!0))}),N(700),Y(t=>!t||t.trim().length<2?R([]):this.dataAccessService.searchUsers(t.trim()).pipe(j(e=>(console.error("Search error:",e),this.isSearching.set(!1),R([])))))).subscribe(t=>{this.searchResults.set(t),this.isSearching.set(!1)})}ngOnDestroy(){this.destroy$.next(),this.destroy$.complete()}clearSearch(){this.searchControl.setValue(""),this.showSearchResults.set(!1),this.searchResults.set([])}selectUser(t){this.clearSearch(),this.userSelected.emit(t)}onSearchFocus(){this.searchControl.value&&this.searchControl.value.trim().length>=2&&this.showSearchResults.set(!0)}onSearchBlur(){setTimeout(()=>{this.showSearchResults.set(!1)},200)}static \u0275fac=function(e){return new(e||n)};static \u0275cmp=x({type:n,selectors:[["app-search-bar"]],outputs:{userSelected:"userSelected"},decls:7,vars:6,consts:[[1,"search-container"],["iconPosition","left",1,"search-field"],["styleClass","pi pi-search"],["type","text","pInputText","",1,"search-input",3,"focus","blur","formControl","placeholder"],[1,"search-results"],[3,"cleared"],[1,"search-loading"],[1,"search-results-list"],[1,"search-no-results"],[1,"pi","pi-spinner","pi-spin"],["pRipple","","tabindex","0","role","button",1,"search-result-item"],["pRipple","","tabindex","0","role","button",1,"search-result-item",3,"click","keydown.enter","keydown.space"],[1,"search-result-avatar"],[1,"pi","pi-user"],[1,"search-result-info"],[1,"search-result-name"],[1,"pi","pi-arrow-right","search-result-arrow"],[1,"pi","pi-search"]],template:function(e,o){e&1&&(i(0,"div",0)(1,"p-iconfield",1),p(2,"p-inputicon",2),i(3,"input",3),C(4,"translate"),u("focus",function(){return o.onSearchFocus()})("blur",function(){return o.onSearchBlur()}),r(),g(5,Pe,1,0,"app-clear-button"),r(),g(6,ke,4,1,"div",4),r()),e&2&&(a(3),f("formControl",o.searchControl)("placeholder",M(4,4,"Search users...")),a(2),O(o.searchControl.value?5:-1),a(),O(o.showSearchResults()?6:-1))},dependencies:[ae,ne,ie,oe,le,ce,pe,de,D,E,B,T,z],styles:['.search-results[_ngcontent-%COMP%]::-webkit-scrollbar{width:6px}.search-results[_ngcontent-%COMP%]::-webkit-scrollbar-track{background:#ffffff1a;border-radius:3px}.search-results[_ngcontent-%COMP%]::-webkit-scrollbar-thumb{background:#ffffff4d;border-radius:3px}.search-results[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover{background:#ffffff80}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-info[_ngcontent-%COMP%]   .search-result-name[_ngcontent-%COMP%]{color:#fff;font-weight:600}.search-container[_ngcontent-%COMP%]{padding:1rem;border-bottom:1px solid rgba(52,245,221,.1);position:relative}.search-container[_ngcontent-%COMP%]   .search-field[_ngcontent-%COMP%]{width:100%;position:relative}.search-container[_ngcontent-%COMP%]   .search-input[_ngcontent-%COMP%]{width:100%;background:#ffffff0d;border:1px solid rgba(52,245,221,.2);color:#fff;padding:.75rem 2.5rem;border-radius:.75rem;font-size:.875rem;transition:all .2s ease-in-out}.search-container[_ngcontent-%COMP%]   .search-input[_ngcontent-%COMP%]::placeholder{color:#ffffff80}.search-container[_ngcontent-%COMP%]   .search-input[_ngcontent-%COMP%]:focus{outline:none;border-color:#34f5dd;background:#ffffff14;box-shadow:0 0 0 3px #34f5dd1a}.search-results[_ngcontent-%COMP%]{position:absolute;top:100%;left:1rem;right:1rem;margin-top:.5rem;background:#121214fa;border:1px solid rgba(52,245,221,.2);border-radius:.75rem;max-height:300px;overflow-y:auto;z-index:1000;box-shadow:0 10px 30px #00000080;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}.search-results[_ngcontent-%COMP%]   .search-loading[_ngcontent-%COMP%], .search-results[_ngcontent-%COMP%]   .search-no-results[_ngcontent-%COMP%]{display:flex;align-items:center;justify-content:center;gap:.75rem;padding:2rem 1rem;color:#fff9;font-size:.875rem}.search-results[_ngcontent-%COMP%]   .search-loading[_ngcontent-%COMP%]   i[_ngcontent-%COMP%], .search-results[_ngcontent-%COMP%]   .search-no-results[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:1.25rem}.search-results[_ngcontent-%COMP%]   .search-results-list[_ngcontent-%COMP%]{padding:.5rem 0}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]{display:flex;align-items:center;padding:.875rem 1rem;cursor:pointer;transition:all .2s ease-in-out;position:relative}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]:before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:#34f5dd;transition:width .2s ease-in-out}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]:hover{background:linear-gradient(90deg,#34f5dd1f,#34f5dd08)}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]:hover:before{width:3px}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]:hover   .search-result-arrow[_ngcontent-%COMP%]{transform:translate(4px);color:#34f5dd}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]:focus{outline:2px solid rgba(52,245,221,.5);outline-offset:-2px;background:linear-gradient(90deg,#34f5dd1f,#34f5dd0d)}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-avatar[_ngcontent-%COMP%]{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#34f5dd33,#34f5dd1a);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(52,245,221,.3)}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-avatar[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:1.25rem;color:#34f5dd}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-info[_ngcontent-%COMP%]{flex:1;margin-left:1rem;min-width:0}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-info[_ngcontent-%COMP%]   .search-result-name[_ngcontent-%COMP%]{font-size:.9375rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-arrow[_ngcontent-%COMP%]{color:#fff6;font-size:.875rem;transition:all .2s ease-in-out;flex-shrink:0;margin-left:.5rem}@media (max-width: 768px){.search-container[_ngcontent-%COMP%]{padding:.75rem}.search-container[_ngcontent-%COMP%]   .search-input[_ngcontent-%COMP%]{padding:.625rem 2.25rem;font-size:.8125rem}.search-results[_ngcontent-%COMP%]{left:.75rem;right:.75rem;max-height:250px}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]{padding:.75rem}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-avatar[_ngcontent-%COMP%]{width:36px;height:36px}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-avatar[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:1.125rem}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-info[_ngcontent-%COMP%]{margin-left:.75rem}.search-results[_ngcontent-%COMP%]   .search-result-item[_ngcontent-%COMP%]   .search-result-info[_ngcontent-%COMP%]   .search-result-name[_ngcontent-%COMP%]{font-size:.875rem}}']})};function Ie(n,t){n&1&&(i(0,"div",1),p(1,"app-loader"),r())}function Te(n,t){if(n&1&&(i(0,"div",21),d(1),r()),n&2){let e=l().$implicit;a(),I(" ",e.profile.name||e.profile.email," ")}}function Be(n,t){if(n&1&&(i(0,"div",22),d(1),r()),n&2){let e=l().$implicit;a(),I(" ",e.unreadCount," ")}}function Ee(n,t){if(n&1){let e=P();i(0,"div",10),u("click",function(){let s=m(e).$implicit,c=l(3);return h(c.openChat(s.userId))})("keydown.enter",function(){let s=m(e).$implicit,c=l(3);return h(c.openChat(s.userId))})("keydown.space",function(){let s=m(e).$implicit,c=l(3);return h(c.openChat(s.userId))}),i(1,"div",11),p(2,"app-chat-avatar",12)(3,"app-online-status",13),r(),i(4,"div",14)(5,"div",15),g(6,Te,2,1,"div",16),i(7,"div",17),d(8),r()(),i(9,"div",18)(10,"span",19),d(11),r(),g(12,Be,2,1,"div",20),r()()()}if(n&2){let e=t.$implicit,o=l(3);H("has-unread",e.unreadCount&&e.unreadCount>0),a(2),f("profile",e.profile),a(),f("isOnline",e.isOnline),a(3),f("ngIf",e.profile.name||e.profile.email),a(2),I(" ",o.formatLastMessageTime(e.lastMessageAt)," "),a(3),_(e.lastMessage),a(),f("ngIf",e.unreadCount&&e.unreadCount>0)}}function De(n,t){if(n&1&&(i(0,"div",8),g(1,Ee,13,8,"div",9),r()),n&2){let e=l(2);a(),f("ngForOf",e.interlocutors())("ngForTrackBy",e.trackByFn)}}function ze(n,t){n&1&&(i(0,"div",23)(1,"div",24),d(2,"\u{1F4AC}"),r(),i(3,"h3"),d(4),C(5,"translate"),r(),i(6,"p"),d(7),C(8,"translate"),r()()),n&2&&(a(4),_(M(5,2,"No conversations yet")),a(3),_(M(8,4,"Start a new conversation to see it here")))}function Fe(n,t){if(n&1){let e=P();i(0,"div",2)(1,"h2",3),d(2),C(3,"translate"),r(),i(4,"div",4),d(5),C(6,"translate"),r()(),i(7,"app-search-bar",5),u("userSelected",function(s){m(e);let c=l();return h(c.onUserSelected(s))}),r(),g(8,De,2,2,"div",6)(9,ze,9,6,"div",7)}if(n&2){let e=l();a(2),_(M(3,5,"Messages")),a(3),Q(" ",M(6,7,"conversations")," (",e.interlocutors().length,") "),a(3),f("ngIf",e.interlocutors().length!==0),a(),f("ngIf",e.interlocutors().length===0)}}var Me=class n{chatStateService=v(te);chats=b(()=>this.chatStateService.chats());chatService=v(me);stateService=v(ee);router=v(Z);currentUserId=b(()=>this.stateService.userId()||"");destroy$=new w;isChatsLoading=b(()=>this.chatService.isChatsLoading());interlocutors=b(()=>this.chats()?this.chats()?.map(t=>{console.log("chat",this.currentUserId());let e=t.participant1Id===Number(this.currentUserId())?t.participant2:t.participant1,o=e?.profile?A($({},e?.profile),{avatarUrl:e?.avatarUrl}):null;return{id:e?.id||"",chatId:t.id,userId:e?.id||"",isOnline:e?.isOnline||!1,profile:o,lastMessageAt:t.lastMessageAt,lastMessage:t.messages[0]?.content||"",unreadCount:this.getUnreadCount(t)}}).sort((t,e)=>{let o=t.lastMessageAt?new Date(t.lastMessageAt).getTime():0;return(e.lastMessageAt?new Date(e.lastMessageAt).getTime():0)-o}):[]);constructor(){this.chatService.onConnect().pipe(S(this.destroy$)).subscribe(()=>{this.connectToUserChats()})}ngOnInit(){this.chatService.isChatsLoading.set(!0),this.chatService.isConnected()&&this.connectToUserChats()}connectToUserChats(){if(console.log("Connecting to user chats",this.chats()),this.chats()){this.chatService.isChatsLoading.set(!1);return}this.chatService.getUserChats()}ngOnDestroy(){this.destroy$.next(),this.destroy$.complete()}trackByFn(t,e){return e.chatId}openChat(t){this.router.navigate(["chat",t])}getUnreadCount(t){return this.chatStateService.getUnreadCount(t)}formatLastMessageTime(t){if(!t)return"";let e=new Date,o=new Date(t),s=e.getTime()-o.getTime(),c=Math.floor(s/(1e3*60)),U=Math.floor(c/60),V=Math.floor(U/24);return c<1?"Now":c<60?`${c}m`:U<24?`${U}h`:V<7?`${V}d`:o.toLocaleDateString()}onUserSelected(t){this.openChat(t)}static \u0275fac=function(e){return new(e||n)};static \u0275cmp=x({type:n,selectors:[["app-messages"]],decls:3,vars:1,consts:[[1,"messages-container"],[1,"loader-container"],[1,"messages-header"],[1,"messages-title"],[1,"messages-count"],[3,"userSelected"],["class","chat-list",4,"ngIf"],["class","empty-state",4,"ngIf"],[1,"chat-list"],["class","chat-item","pRipple","","tabindex","0","role","button",3,"has-unread","click","keydown.enter","keydown.space",4,"ngFor","ngForOf","ngForTrackBy"],["pRipple","","tabindex","0","role","button",1,"chat-item",3,"click","keydown.enter","keydown.space"],[1,"avatar-container"],[3,"profile"],[1,"status-indicator",3,"isOnline"],[1,"chat-content"],[1,"chat-header"],["class","chat-name",4,"ngIf"],[1,"chat-time"],[1,"chat-preview"],[1,"last-message"],["class","unread-badge",4,"ngIf"],[1,"chat-name"],[1,"unread-badge"],[1,"empty-state"],[1,"empty-icon"]],template:function(e,o){e&1&&(i(0,"div",0),g(1,Ie,2,0,"div",1)(2,Fe,10,9),r()),e&2&&(a(),O(o.isChatsLoading()?1:2))},dependencies:[W,X,he,D,E,se,fe,ue,ge,B,T,F],styles:['.chat-list[_ngcontent-%COMP%]::-webkit-scrollbar{width:6px}.chat-list[_ngcontent-%COMP%]::-webkit-scrollbar-track{background:#ffffff1a;border-radius:3px}.chat-list[_ngcontent-%COMP%]::-webkit-scrollbar-thumb{background:#ffffff4d;border-radius:3px}.chat-list[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover{background:#ffffff80}.messages-header[_ngcontent-%COMP%]   .messages-title[_ngcontent-%COMP%], .chat-content[_ngcontent-%COMP%]   .chat-header[_ngcontent-%COMP%]   .chat-name[_ngcontent-%COMP%], .empty-state[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%]{color:#fff;font-weight:600}[_nghost-%COMP%]{display:flex;width:100%;justify-content:flex-end}@media (max-width: 800px){[_nghost-%COMP%]{justify-content:center}[_nghost-%COMP%]   .messages-container[_ngcontent-%COMP%]{right:0;max-width:100%}}.messages-container[_ngcontent-%COMP%]{height:100%;display:flex;flex-direction:column;background:#18181bcc;color:#fff;overflow:hidden;position:relative;top:78px;right:2rem;width:320px;border:1px solid rgba(52,245,221,.2);border-radius:1.5rem}.messages-container[_ngcontent-%COMP%]   .loader-container[_ngcontent-%COMP%]{padding:20px}.messages-header[_ngcontent-%COMP%]{padding:1.5rem 1rem 1rem;border-bottom:1px solid rgba(52,245,221,.1);background:linear-gradient(135deg,rgba(52,245,221,.05) 0%,transparent 100%)}.messages-header[_ngcontent-%COMP%]   .messages-title[_ngcontent-%COMP%]{font-size:1.5rem;margin:0 0 .5rem;font-weight:700}.messages-header[_ngcontent-%COMP%]   .messages-count[_ngcontent-%COMP%]{color:#fff9;font-size:.875rem;font-weight:400}.messages-header[_ngcontent-%COMP%]   .messages-count[_ngcontent-%COMP%]   .unread-indicator[_ngcontent-%COMP%]{color:#34f5dd;font-weight:600}.chat-list[_ngcontent-%COMP%]{flex:1;overflow-y:auto;max-height:50vh;max-height:50dvh;min-height:320px;padding:.5rem 0 1.5rem}.chat-item[_ngcontent-%COMP%]{display:flex;align-items:center;padding:1rem;cursor:pointer;transition:all .2s ease-in-out;border-bottom:1px solid rgba(52,245,221,.05);position:relative}.chat-item[_ngcontent-%COMP%]:before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:#34f5dd;transition:width .2s ease-in-out}.chat-item[_ngcontent-%COMP%]:hover{background:linear-gradient(90deg,#34f5dd14,#34f5dd08)}.chat-item[_ngcontent-%COMP%]:hover:before{width:3px}.chat-item.has-unread[_ngcontent-%COMP%]{background:linear-gradient(90deg,#34f5dd1f,#34f5dd0d)}.chat-item.has-unread[_ngcontent-%COMP%]:before{width:3px}.chat-item[_ngcontent-%COMP%]:last-child{border-bottom:none}.avatar-container[_ngcontent-%COMP%]{position:relative;flex-shrink:0}.avatar-container[_ngcontent-%COMP%]   .status-indicator[_ngcontent-%COMP%]{position:absolute;bottom:2px;right:2px;z-index:1}.chat-content[_ngcontent-%COMP%]{flex:1;min-width:0;margin-left:14px}.chat-content[_ngcontent-%COMP%]   .chat-header[_ngcontent-%COMP%]{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.chat-content[_ngcontent-%COMP%]   .chat-header[_ngcontent-%COMP%]   .chat-name[_ngcontent-%COMP%]{font-size:1rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70%}.chat-content[_ngcontent-%COMP%]   .chat-header[_ngcontent-%COMP%]   .chat-time[_ngcontent-%COMP%]{color:#ffffff80;font-size:.75rem;font-weight:400;flex-shrink:0}.chat-content[_ngcontent-%COMP%]   .chat-preview[_ngcontent-%COMP%]{display:flex;justify-content:space-between;align-items:center}.chat-content[_ngcontent-%COMP%]   .chat-preview[_ngcontent-%COMP%]   .last-message[_ngcontent-%COMP%]{color:#ffffffb3;font-size:.875rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-right:.5rem}.chat-content[_ngcontent-%COMP%]   .chat-preview[_ngcontent-%COMP%]   .unread-badge[_ngcontent-%COMP%]{background:#34f5dd;color:#000;font-size:.75rem;font-weight:600;padding:2px 6px;border-radius:10px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.empty-state[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;min-height:320px;padding:2rem;text-align:center;opacity:.7}.empty-state[_ngcontent-%COMP%]   .empty-icon[_ngcontent-%COMP%]{font-size:4rem;margin-bottom:1rem;opacity:.5}.empty-state[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%]{font-size:1.25rem;margin:0 0 .5rem;font-weight:600}.empty-state[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{color:#fff9;margin:0;font-size:.875rem}@media (max-width: 768px){.messages-header[_ngcontent-%COMP%]{padding:1rem .75rem .75rem}.messages-header[_ngcontent-%COMP%]   .messages-title[_ngcontent-%COMP%]{font-size:1.25rem}.chat-item[_ngcontent-%COMP%]{padding:.75rem}.chat-item[_ngcontent-%COMP%]:hover{padding-left:calc(.75rem - 3px)}.chat-content[_ngcontent-%COMP%]   .chat-header[_ngcontent-%COMP%]   .chat-name[_ngcontent-%COMP%]{font-size:.9rem;max-width:65%}}']})};export{Me as MessagesComponent};
+import{a as pt,c as gt,d as ht,e as ft}from"./53.js";import{a as dt}from"./41.js";import{Da as st,Ea as L,H as A,Ha as bt,Ka as $,W as k,a as et,j as rt,m as it,na as F,q as lt,r as at,u as R,x as ut,xa as ct}from"./42.js";import{Cb as x,Db as C,Eb as h,Fb as z,Gb as O,Hb as J,Mb as K,Nb as s,Ob as W,Pb as X,Rb as _,T as q,Ta as u,Tb as I,U as B,Ub as w,Vb as Q,Xb as Y,Z as d,Zb as tt,_b as ot,ab as j,ea as N,ec as T,fb as S,gb as P,gc as V,ha as G,hb as y,ia as b,jb as p,kb as v,oa as E,rb as g,sb as l,ta as U,ub as D,wb as M,wc as a,xc as nt,ya as Z,zc as H}from"./35.js";var vt=(()=>{class t extends ${autofocus=!1;_autofocus=!1;focused=!1;platformId=d(Z);document=d(et);host=d(U);ngAfterContentChecked(){this.autofocus===!1?this.host.nativeElement.removeAttribute("autofocus"):this.host.nativeElement.setAttribute("autofocus",!0),this.focused||this.autoFocus()}ngAfterViewChecked(){this.focused||this.autoFocus()}autoFocus(){ut(this.platformId)&&this._autofocus&&setTimeout(()=>{let o=pt.getFocusableElements(this.host?.nativeElement);o.length===0&&this.host.nativeElement.focus(),o.length>0&&o[0].focus(),this.focused=!0})}static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275dir=y({type:t,selectors:[["","pAutoFocus",""]],inputs:{autofocus:[2,"autofocus","autofocus",a],_autofocus:[0,"pAutoFocus","_autofocus"]},features:[p]})}return t})(),Kt=(()=>{class t{static \u0275fac=function(e){return new(e||t)};static \u0275mod=P({type:t});static \u0275inj=B({})}return t})();var $t=(()=>{class t extends dt{pathId;ngOnInit(){this.pathId="url(#"+ct()+")"}static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275cmp=S({type:t,selectors:[["SpinnerIcon"]],features:[p],decls:6,vars:7,consts:[["width","14","height","14","viewBox","0 0 14 14","fill","none","xmlns","http://www.w3.org/2000/svg"],["d","M6.99701 14C5.85441 13.999 4.72939 13.7186 3.72012 13.1832C2.71084 12.6478 1.84795 11.8737 1.20673 10.9284C0.565504 9.98305 0.165424 8.89526 0.041387 7.75989C-0.0826496 6.62453 0.073125 5.47607 0.495122 4.4147C0.917119 3.35333 1.59252 2.4113 2.46241 1.67077C3.33229 0.930247 4.37024 0.413729 5.4857 0.166275C6.60117 -0.0811796 7.76026 -0.0520535 8.86188 0.251112C9.9635 0.554278 10.9742 1.12227 11.8057 1.90555C11.915 2.01493 11.9764 2.16319 11.9764 2.31778C11.9764 2.47236 11.915 2.62062 11.8057 2.73C11.7521 2.78503 11.688 2.82877 11.6171 2.85864C11.5463 2.8885 11.4702 2.90389 11.3933 2.90389C11.3165 2.90389 11.2404 2.8885 11.1695 2.85864C11.0987 2.82877 11.0346 2.78503 10.9809 2.73C9.9998 1.81273 8.73246 1.26138 7.39226 1.16876C6.05206 1.07615 4.72086 1.44794 3.62279 2.22152C2.52471 2.99511 1.72683 4.12325 1.36345 5.41602C1.00008 6.70879 1.09342 8.08723 1.62775 9.31926C2.16209 10.5513 3.10478 11.5617 4.29713 12.1803C5.48947 12.7989 6.85865 12.988 8.17414 12.7157C9.48963 12.4435 10.6711 11.7264 11.5196 10.6854C12.3681 9.64432 12.8319 8.34282 12.8328 7C12.8328 6.84529 12.8943 6.69692 13.0038 6.58752C13.1132 6.47812 13.2616 6.41667 13.4164 6.41667C13.5712 6.41667 13.7196 6.47812 13.8291 6.58752C13.9385 6.69692 14 6.84529 14 7C14 8.85651 13.2622 10.637 11.9489 11.9497C10.6356 13.2625 8.85432 14 6.99701 14Z","fill","currentColor"],[3,"id"],["width","14","height","14","fill","white"]],template:function(e,n){e&1&&(G(),x(0,"svg",0)(1,"g"),h(2,"path",1),C(),x(3,"defs")(4,"clipPath",2),h(5,"rect",3),C()()()),e&2&&(M(n.getClassNames()),g("aria-label",n.ariaLabel)("aria-hidden",n.ariaHidden)("role",n.role),u(),g("clip-path",n.pathId),u(3),l("id",n.pathId))},encapsulation:2})}return t})();var kt=["content"],_t=["loadingicon"],It=["icon"],wt=["*"],Ct=t=>({class:t});function Tt(t,r){t&1&&J(0)}function Ft(t,r){if(t&1&&h(0,"span",8),t&2){let o=s(3);l("ngClass",o.iconClass()),g("aria-hidden",!0)("data-pc-section","loadingicon")}}function Bt(t,r){if(t&1&&h(0,"SpinnerIcon",9),t&2){let o=s(3);l("styleClass",o.spinnerIconClass())("spin",!0),g("aria-hidden",!0)("data-pc-section","loadingicon")}}function Et(t,r){if(t&1&&(z(0),v(1,Ft,1,3,"span",6)(2,Bt,1,4,"SpinnerIcon",7),O()),t&2){let o=s(2);u(),l("ngIf",o.loadingIcon),u(),l("ngIf",!o.loadingIcon)}}function St(t,r){}function Pt(t,r){if(t&1&&v(0,St,0,0,"ng-template",10),t&2){let o=s(2);l("ngIf",o.loadingIconTemplate||o._loadingIconTemplate)}}function Dt(t,r){if(t&1&&(z(0),v(1,Et,3,2,"ng-container",2)(2,Pt,1,1,null,5),O()),t&2){let o=s();u(),l("ngIf",!o.loadingIconTemplate&&!o._loadingIconTemplate),u(),l("ngTemplateOutlet",o.loadingIconTemplate||o._loadingIconTemplate)("ngTemplateOutletContext",V(3,Ct,o.iconClass()))}}function Mt(t,r){if(t&1&&h(0,"span",8),t&2){let o=s(2);M(o.icon),l("ngClass",o.iconClass()),g("data-pc-section","icon")}}function zt(t,r){}function Ot(t,r){if(t&1&&v(0,zt,0,0,"ng-template",10),t&2){let o=s(2);l("ngIf",!o.icon&&(o.iconTemplate||o._iconTemplate))}}function At(t,r){if(t&1&&(z(0),v(1,Mt,1,4,"span",11)(2,Ot,1,1,null,5),O()),t&2){let o=s();u(),l("ngIf",o.icon&&!o.iconTemplate&&!o._iconTemplate),u(),l("ngTemplateOutlet",o.iconTemplate||o._iconTemplate)("ngTemplateOutletContext",V(3,Ct,o.iconClass()))}}function Lt(t,r){if(t&1&&(x(0,"span",12),tt(1),C()),t&2){let o=s();g("aria-hidden",o.icon&&!o.label)("data-pc-section","label"),u(),ot(o.label)}}function Nt(t,r){if(t&1&&h(0,"p-badge",13),t&2){let o=s();l("value",o.badge)("severity",o.badgeSeverity)}}var jt=({dt:t})=>`
+.p-button {
+    display: inline-flex;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    color: ${t("button.primary.color")};
+    background: ${t("button.primary.background")};
+    border: 1px solid ${t("button.primary.border.color")};
+    padding-block: ${t("button.padding.y")};
+    padding-inline: ${t("button.padding.x")};
+    font-size: 1rem;
+    font-family: inherit;
+    font-feature-settings: inherit;
+    transition: background ${t("button.transition.duration")}, color ${t("button.transition.duration")}, border-color ${t("button.transition.duration")},
+            outline-color ${t("button.transition.duration")}, box-shadow ${t("button.transition.duration")};
+    border-radius: ${t("button.border.radius")};
+    outline-color: transparent;
+    gap: ${t("button.gap")};
+}
+
+.p-button-icon,
+.p-button-icon:before,
+.p-button-icon:after {
+    line-height: inherit;
+}
+
+.p-button:disabled {
+    cursor: default;
+}
+
+.p-button-icon-right {
+    order: 1;
+}
+
+.p-button-icon-right:dir(rtl) {
+    order: -1;
+}
+
+.p-button:not(.p-button-vertical) .p-button-icon:not(.p-button-icon-right):dir(rtl) {
+    order: 1;
+}
+
+.p-button-icon-bottom {
+    order: 2;
+}
+
+.p-button-icon-only {
+    width: ${t("button.icon.only.width")};
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    gap: 0;
+}
+
+.p-button-icon-only.p-button-rounded {
+    border-radius: 50%;
+    height: ${t("button.icon.only.width")};
+}
+
+.p-button-icon-only .p-button-label {
+    visibility: hidden;
+    width: 0;
+}
+
+.p-button-sm {
+    font-size: ${t("button.sm.font.size")};
+    padding-block: ${t("button.sm.padding.y")};
+    padding-inline: ${t("button.sm.padding.x")};
+}
+
+.p-button-sm .p-button-icon {
+    font-size: ${t("button.sm.font.size")};
+}
+
+.p-button-sm.p-button-icon-only {
+    width: ${t("button.sm.icon.only.width")};
+}
+
+.p-button-sm.p-button-icon-only.p-button-rounded {
+    height: ${t("button.sm.icon.only.width")};
+}
+
+.p-button-lg {
+    font-size: ${t("button.lg.font.size")};
+    padding-block: ${t("button.lg.padding.y")};
+    padding-inline: ${t("button.lg.padding.x")};
+}
+
+.p-button-lg .p-button-icon {
+    font-size: ${t("button.lg.font.size")};
+}
+
+.p-button-lg.p-button-icon-only {
+    width: ${t("button.lg.icon.only.width")};
+}
+
+.p-button-lg.p-button-icon-only.p-button-rounded {
+    height: ${t("button.lg.icon.only.width")};
+}
+
+.p-button-vertical {
+    flex-direction: column;
+}
+
+.p-button-label {
+    font-weight: ${t("button.label.font.weight")};
+}
+
+.p-button-fluid {
+    width: 100%;
+}
+
+.p-button-fluid.p-button-icon-only {
+    width: ${t("button.icon.only.width")};
+}
+
+.p-button:not(:disabled):hover {
+    background: ${t("button.primary.hover.background")};
+    border: 1px solid ${t("button.primary.hover.border.color")};
+    color: ${t("button.primary.hover.color")};
+}
+
+.p-button:not(:disabled):active {
+    background: ${t("button.primary.active.background")};
+    border: 1px solid ${t("button.primary.active.border.color")};
+    color: ${t("button.primary.active.color")};
+}
+
+.p-button:focus-visible {
+    box-shadow: ${t("button.primary.focus.ring.shadow")};
+    outline: ${t("button.focus.ring.width")} ${t("button.focus.ring.style")} ${t("button.primary.focus.ring.color")};
+    outline-offset: ${t("button.focus.ring.offset")};
+}
+
+.p-button .p-badge {
+    min-width: ${t("button.badge.size")};
+    height: ${t("button.badge.size")};
+    line-height: ${t("button.badge.size")};
+}
+
+.p-button-raised {
+    box-shadow: ${t("button.raised.shadow")};
+}
+
+.p-button-rounded {
+    border-radius: ${t("button.rounded.border.radius")};
+}
+
+.p-button-secondary {
+    background: ${t("button.secondary.background")};
+    border: 1px solid ${t("button.secondary.border.color")};
+    color: ${t("button.secondary.color")};
+}
+
+.p-button-secondary:not(:disabled):hover {
+    background: ${t("button.secondary.hover.background")};
+    border: 1px solid ${t("button.secondary.hover.border.color")};
+    color: ${t("button.secondary.hover.color")};
+}
+
+.p-button-secondary:not(:disabled):active {
+    background: ${t("button.secondary.active.background")};
+    border: 1px solid ${t("button.secondary.active.border.color")};
+    color: ${t("button.secondary.active.color")};
+}
+
+.p-button-secondary:focus-visible {
+    outline-color: ${t("button.secondary.focus.ring.color")};
+    box-shadow: ${t("button.secondary.focus.ring.shadow")};
+}
+
+.p-button-success {
+    background: ${t("button.success.background")};
+    border: 1px solid ${t("button.success.border.color")};
+    color: ${t("button.success.color")};
+}
+
+.p-button-success:not(:disabled):hover {
+    background: ${t("button.success.hover.background")};
+    border: 1px solid ${t("button.success.hover.border.color")};
+    color: ${t("button.success.hover.color")};
+}
+
+.p-button-success:not(:disabled):active {
+    background: ${t("button.success.active.background")};
+    border: 1px solid ${t("button.success.active.border.color")};
+    color: ${t("button.success.active.color")};
+}
+
+.p-button-success:focus-visible {
+    outline-color: ${t("button.success.focus.ring.color")};
+    box-shadow: ${t("button.success.focus.ring.shadow")};
+}
+
+.p-button-info {
+    background: ${t("button.info.background")};
+    border: 1px solid ${t("button.info.border.color")};
+    color: ${t("button.info.color")};
+}
+
+.p-button-info:not(:disabled):hover {
+    background: ${t("button.info.hover.background")};
+    border: 1px solid ${t("button.info.hover.border.color")};
+    color: ${t("button.info.hover.color")};
+}
+
+.p-button-info:not(:disabled):active {
+    background: ${t("button.info.active.background")};
+    border: 1px solid ${t("button.info.active.border.color")};
+    color: ${t("button.info.active.color")};
+}
+
+.p-button-info:focus-visible {
+    outline-color: ${t("button.info.focus.ring.color")};
+    box-shadow: ${t("button.info.focus.ring.shadow")};
+}
+
+.p-button-warn {
+    background: ${t("button.warn.background")};
+    border: 1px solid ${t("button.warn.border.color")};
+    color: ${t("button.warn.color")};
+}
+
+.p-button-warn:not(:disabled):hover {
+    background: ${t("button.warn.hover.background")};
+    border: 1px solid ${t("button.warn.hover.border.color")};
+    color: ${t("button.warn.hover.color")};
+}
+
+.p-button-warn:not(:disabled):active {
+    background: ${t("button.warn.active.background")};
+    border: 1px solid ${t("button.warn.active.border.color")};
+    color: ${t("button.warn.active.color")};
+}
+
+.p-button-warn:focus-visible {
+    outline-color: ${t("button.warn.focus.ring.color")};
+    box-shadow: ${t("button.warn.focus.ring.shadow")};
+}
+
+.p-button-help {
+    background: ${t("button.help.background")};
+    border: 1px solid ${t("button.help.border.color")};
+    color: ${t("button.help.color")};
+}
+
+.p-button-help:not(:disabled):hover {
+    background: ${t("button.help.hover.background")};
+    border: 1px solid ${t("button.help.hover.border.color")};
+    color: ${t("button.help.hover.color")};
+}
+
+.p-button-help:not(:disabled):active {
+    background: ${t("button.help.active.background")};
+    border: 1px solid ${t("button.help.active.border.color")};
+    color: ${t("button.help.active.color")};
+}
+
+.p-button-help:focus-visible {
+    outline-color: ${t("button.help.focus.ring.color")};
+    box-shadow: ${t("button.help.focus.ring.shadow")};
+}
+
+.p-button-danger {
+    background: ${t("button.danger.background")};
+    border: 1px solid ${t("button.danger.border.color")};
+    color: ${t("button.danger.color")};
+}
+
+.p-button-danger:not(:disabled):hover {
+    background: ${t("button.danger.hover.background")};
+    border: 1px solid ${t("button.danger.hover.border.color")};
+    color: ${t("button.danger.hover.color")};
+}
+
+.p-button-danger:not(:disabled):active {
+    background: ${t("button.danger.active.background")};
+    border: 1px solid ${t("button.danger.active.border.color")};
+    color: ${t("button.danger.active.color")};
+}
+
+.p-button-danger:focus-visible {
+    outline-color: ${t("button.danger.focus.ring.color")};
+    box-shadow: ${t("button.danger.focus.ring.shadow")};
+}
+
+.p-button-contrast {
+    background: ${t("button.contrast.background")};
+    border: 1px solid ${t("button.contrast.border.color")};
+    color: ${t("button.contrast.color")};
+}
+
+.p-button-contrast:not(:disabled):hover {
+    background: ${t("button.contrast.hover.background")};
+    border: 1px solid ${t("button.contrast.hover.border.color")};
+    color: ${t("button.contrast.hover.color")};
+}
+
+.p-button-contrast:not(:disabled):active {
+    background: ${t("button.contrast.active.background")};
+    border: 1px solid ${t("button.contrast.active.border.color")};
+    color: ${t("button.contrast.active.color")};
+}
+
+.p-button-contrast:focus-visible {
+    outline-color: ${t("button.contrast.focus.ring.color")};
+    box-shadow: ${t("button.contrast.focus.ring.shadow")};
+}
+
+.p-button-outlined {
+    background: transparent;
+    border-color: ${t("button.outlined.primary.border.color")};
+    color: ${t("button.outlined.primary.color")};
+}
+
+.p-button-outlined:not(:disabled):hover {
+    background: ${t("button.outlined.primary.hover.background")};
+    border-color: ${t("button.outlined.primary.border.color")};
+    color: ${t("button.outlined.primary.color")};
+}
+
+.p-button-outlined:not(:disabled):active {
+    background: ${t("button.outlined.primary.active.background")};
+    border-color: ${t("button.outlined.primary.border.color")};
+    color: ${t("button.outlined.primary.color")};
+}
+
+.p-button-outlined.p-button-secondary {
+    border-color: ${t("button.outlined.secondary.border.color")};
+    color: ${t("button.outlined.secondary.color")};
+}
+
+.p-button-outlined.p-button-secondary:not(:disabled):hover {
+    background: ${t("button.outlined.secondary.hover.background")};
+    border-color: ${t("button.outlined.secondary.border.color")};
+    color: ${t("button.outlined.secondary.color")};
+}
+
+.p-button-outlined.p-button-secondary:not(:disabled):active {
+    background: ${t("button.outlined.secondary.active.background")};
+    border-color: ${t("button.outlined.secondary.border.color")};
+    color: ${t("button.outlined.secondary.color")};
+}
+
+.p-button-outlined.p-button-success {
+    border-color: ${t("button.outlined.success.border.color")};
+    color: ${t("button.outlined.success.color")};
+}
+
+.p-button-outlined.p-button-success:not(:disabled):hover {
+    background: ${t("button.outlined.success.hover.background")};
+    border-color: ${t("button.outlined.success.border.color")};
+    color: ${t("button.outlined.success.color")};
+}
+
+.p-button-outlined.p-button-success:not(:disabled):active {
+    background: ${t("button.outlined.success.active.background")};
+    border-color: ${t("button.outlined.success.border.color")};
+    color: ${t("button.outlined.success.color")};
+}
+
+.p-button-outlined.p-button-info {
+    border-color: ${t("button.outlined.info.border.color")};
+    color: ${t("button.outlined.info.color")};
+}
+
+.p-button-outlined.p-button-info:not(:disabled):hover {
+    background: ${t("button.outlined.info.hover.background")};
+    border-color: ${t("button.outlined.info.border.color")};
+    color: ${t("button.outlined.info.color")};
+}
+
+.p-button-outlined.p-button-info:not(:disabled):active {
+    background: ${t("button.outlined.info.active.background")};
+    border-color: ${t("button.outlined.info.border.color")};
+    color: ${t("button.outlined.info.color")};
+}
+
+.p-button-outlined.p-button-warn {
+    border-color: ${t("button.outlined.warn.border.color")};
+    color: ${t("button.outlined.warn.color")};
+}
+
+.p-button-outlined.p-button-warn:not(:disabled):hover {
+    background: ${t("button.outlined.warn.hover.background")};
+    border-color: ${t("button.outlined.warn.border.color")};
+    color: ${t("button.outlined.warn.color")};
+}
+
+.p-button-outlined.p-button-warn:not(:disabled):active {
+    background: ${t("button.outlined.warn.active.background")};
+    border-color: ${t("button.outlined.warn.border.color")};
+    color: ${t("button.outlined.warn.color")};
+}
+
+.p-button-outlined.p-button-help {
+    border-color: ${t("button.outlined.help.border.color")};
+    color: ${t("button.outlined.help.color")};
+}
+
+.p-button-outlined.p-button-help:not(:disabled):hover {
+    background: ${t("button.outlined.help.hover.background")};
+    border-color: ${t("button.outlined.help.border.color")};
+    color: ${t("button.outlined.help.color")};
+}
+
+.p-button-outlined.p-button-help:not(:disabled):active {
+    background: ${t("button.outlined.help.active.background")};
+    border-color: ${t("button.outlined.help.border.color")};
+    color: ${t("button.outlined.help.color")};
+}
+
+.p-button-outlined.p-button-danger {
+    border-color: ${t("button.outlined.danger.border.color")};
+    color: ${t("button.outlined.danger.color")};
+}
+
+.p-button-outlined.p-button-danger:not(:disabled):hover {
+    background: ${t("button.outlined.danger.hover.background")};
+    border-color: ${t("button.outlined.danger.border.color")};
+    color: ${t("button.outlined.danger.color")};
+}
+
+.p-button-outlined.p-button-danger:not(:disabled):active {
+    background: ${t("button.outlined.danger.active.background")};
+    border-color: ${t("button.outlined.danger.border.color")};
+    color: ${t("button.outlined.danger.color")};
+}
+
+.p-button-outlined.p-button-contrast {
+    border-color: ${t("button.outlined.contrast.border.color")};
+    color: ${t("button.outlined.contrast.color")};
+}
+
+.p-button-outlined.p-button-contrast:not(:disabled):hover {
+    background: ${t("button.outlined.contrast.hover.background")};
+    border-color: ${t("button.outlined.contrast.border.color")};
+    color: ${t("button.outlined.contrast.color")};
+}
+
+.p-button-outlined.p-button-contrast:not(:disabled):active {
+    background: ${t("button.outlined.contrast.active.background")};
+    border-color: ${t("button.outlined.contrast.border.color")};
+    color: ${t("button.outlined.contrast.color")};
+}
+
+.p-button-outlined.p-button-plain {
+    border-color: ${t("button.outlined.plain.border.color")};
+    color: ${t("button.outlined.plain.color")};
+}
+
+.p-button-outlined.p-button-plain:not(:disabled):hover {
+    background: ${t("button.outlined.plain.hover.background")};
+    border-color: ${t("button.outlined.plain.border.color")};
+    color: ${t("button.outlined.plain.color")};
+}
+
+.p-button-outlined.p-button-plain:not(:disabled):active {
+    background: ${t("button.outlined.plain.active.background")};
+    border-color: ${t("button.outlined.plain.border.color")};
+    color: ${t("button.outlined.plain.color")};
+}
+
+.p-button-text {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.primary.color")};
+}
+
+.p-button-text:not(:disabled):hover {
+    background: ${t("button.text.primary.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.primary.color")};
+}
+
+.p-button-text:not(:disabled):active {
+    background: ${t("button.text.primary.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.primary.color")};
+}
+
+.p-button-text.p-button-secondary {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.secondary.color")};
+}
+
+.p-button-text.p-button-secondary:not(:disabled):hover {
+    background: ${t("button.text.secondary.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.secondary.color")};
+}
+
+.p-button-text.p-button-secondary:not(:disabled):active {
+    background: ${t("button.text.secondary.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.secondary.color")};
+}
+
+.p-button-text.p-button-success {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.success.color")};
+}
+
+.p-button-text.p-button-success:not(:disabled):hover {
+    background: ${t("button.text.success.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.success.color")};
+}
+
+.p-button-text.p-button-success:not(:disabled):active {
+    background: ${t("button.text.success.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.success.color")};
+}
+
+.p-button-text.p-button-info {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.info.color")};
+}
+
+.p-button-text.p-button-info:not(:disabled):hover {
+    background: ${t("button.text.info.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.info.color")};
+}
+
+.p-button-text.p-button-info:not(:disabled):active {
+    background: ${t("button.text.info.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.info.color")};
+}
+
+.p-button-text.p-button-warn {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.warn.color")};
+}
+
+.p-button-text.p-button-warn:not(:disabled):hover {
+    background: ${t("button.text.warn.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.warn.color")};
+}
+
+.p-button-text.p-button-warn:not(:disabled):active {
+    background: ${t("button.text.warn.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.warn.color")};
+}
+
+.p-button-text.p-button-help {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.help.color")};
+}
+
+.p-button-text.p-button-help:not(:disabled):hover {
+    background: ${t("button.text.help.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.help.color")};
+}
+
+.p-button-text.p-button-help:not(:disabled):active {
+    background: ${t("button.text.help.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.help.color")};
+}
+
+.p-button-text.p-button-danger {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.danger.color")};
+}
+
+.p-button-text.p-button-danger:not(:disabled):hover {
+    background: ${t("button.text.danger.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.danger.color")};
+}
+
+.p-button-text.p-button-danger:not(:disabled):active {
+    background: ${t("button.text.danger.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.danger.color")};
+}
+
+.p-button-text.p-button-plain {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.plain.color")};
+}
+
+.p-button-text.p-button-plain:not(:disabled):hover {
+    background: ${t("button.text.plain.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.plain.color")};
+}
+
+.p-button-text.p-button-plain:not(:disabled):active {
+    background: ${t("button.text.plain.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.plain.color")};
+}
+
+.p-button-text.p-button-contrast {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.text.contrast.color")};
+}
+
+.p-button-text.p-button-contrast:not(:disabled):hover {
+    background: ${t("button.text.contrast.hover.background")};
+    border-color: transparent;
+    color: ${t("button.text.contrast.color")};
+}
+
+.p-button-text.p-button-contrast:not(:disabled):active {
+    background: ${t("button.text.contrast.active.background")};
+    border-color: transparent;
+    color: ${t("button.text.contrast.color")};
+}
+
+.p-button-link {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.link.color")};
+}
+
+.p-button-link:not(:disabled):hover {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.link.hover.color")};
+}
+
+.p-button-link:not(:disabled):hover .p-button-label {
+    text-decoration: underline;
+}
+
+.p-button-link:not(:disabled):active {
+    background: transparent;
+    border-color: transparent;
+    color: ${t("button.link.active.color")};
+}
+
+/* For PrimeNG */
+.p-button-icon-right {
+    order: 1;
+}
+
+p-button[iconpos='right'] spinnericon {
+    order: 1;
+}
+`,Qt={root:({instance:t,props:r})=>["p-button p-component",{"p-button-icon-only":t.hasIcon&&!r.label&&!r.badge,"p-button-vertical":(r.iconPos==="top"||r.iconPos==="bottom")&&r.label,"p-button-loading":r.loading,"p-button-link":r.link,[`p-button-${r.severity}`]:r.severity,"p-button-raised":r.raised,"p-button-rounded":r.rounded,"p-button-text":r.text,"p-button-outlined":r.outlined,"p-button-sm":r.size==="small","p-button-lg":r.size==="large","p-button-plain":r.plain,"p-button-fluid":r.fluid}],loadingIcon:"p-button-loading-icon",icon:({props:t})=>["p-button-icon",{[`p-button-icon-${t.iconPos}`]:t.label}],label:"p-button-label"},m=(()=>{class t extends bt{name="button";theme=jt;classes=Qt;static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275prov=q({token:t,factory:t.\u0275fac})}return t})();var f={button:"p-button",component:"p-component",iconOnly:"p-button-icon-only",disabled:"p-disabled",loading:"p-button-loading",labelOnly:"p-button-loading-label-only"},yt=(()=>{class t extends ${_componentStyle=d(m);static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275dir=y({type:t,selectors:[["","pButtonLabel",""]],hostVars:2,hostBindings:function(e,n){e&2&&D("p-button-label",!0)},features:[T([m]),p]})}return t})(),xt=(()=>{class t extends ${_componentStyle=d(m);static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275dir=y({type:t,selectors:[["","pButtonIcon",""]],hostVars:2,hostBindings:function(e,n){e&2&&D("p-button-icon",!0)},features:[T([m]),p]})}return t})(),_o=(()=>{class t extends ${iconPos="left";loadingIcon;set label(o){this._label=o,this.initialized&&(this.updateLabel(),this.updateIcon(),this.setStyleClass())}set icon(o){this._icon=o,this.initialized&&(this.updateIcon(),this.setStyleClass())}get loading(){return this._loading}set loading(o){this._loading=o,this.initialized&&(this.updateIcon(),this.setStyleClass())}_buttonProps;iconSignal=j(xt);labelSignal=j(yt);isIconOnly=H(()=>!!(!this.labelSignal()&&this.iconSignal()));set buttonProps(o){this._buttonProps=o,o&&typeof o=="object"&&Object.entries(o).forEach(([e,n])=>this[`_${e}`]!==n&&(this[`_${e}`]=n))}_severity;get severity(){return this._severity}set severity(o){this._severity=o,this.initialized&&this.setStyleClass()}raised=!1;rounded=!1;text=!1;outlined=!1;size=null;plain=!1;fluid;_label;_icon;_loading=!1;initialized;get htmlElement(){return this.el.nativeElement}_internalClasses=Object.values(f);isTextButton=H(()=>!!(!this.iconSignal()&&this.labelSignal()&&this.text));get label(){return this._label}get icon(){return this._icon}get buttonProps(){return this._buttonProps}spinnerIcon=`<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="p-icon-spin">
+        <g clip-path="url(#clip0_417_21408)">
+            <path
+                d="M6.99701 14C5.85441 13.999 4.72939 13.7186 3.72012 13.1832C2.71084 12.6478 1.84795 11.8737 1.20673 10.9284C0.565504 9.98305 0.165424 8.89526 0.041387 7.75989C-0.0826496 6.62453 0.073125 5.47607 0.495122 4.4147C0.917119 3.35333 1.59252 2.4113 2.46241 1.67077C3.33229 0.930247 4.37024 0.413729 5.4857 0.166275C6.60117 -0.0811796 7.76026 -0.0520535 8.86188 0.251112C9.9635 0.554278 10.9742 1.12227 11.8057 1.90555C11.915 2.01493 11.9764 2.16319 11.9764 2.31778C11.9764 2.47236 11.915 2.62062 11.8057 2.73C11.7521 2.78503 11.688 2.82877 11.6171 2.85864C11.5463 2.8885 11.4702 2.90389 11.3933 2.90389C11.3165 2.90389 11.2404 2.8885 11.1695 2.85864C11.0987 2.82877 11.0346 2.78503 10.9809 2.73C9.9998 1.81273 8.73246 1.26138 7.39226 1.16876C6.05206 1.07615 4.72086 1.44794 3.62279 2.22152C2.52471 2.99511 1.72683 4.12325 1.36345 5.41602C1.00008 6.70879 1.09342 8.08723 1.62775 9.31926C2.16209 10.5513 3.10478 11.5617 4.29713 12.1803C5.48947 12.7989 6.85865 12.988 8.17414 12.7157C9.48963 12.4435 10.6711 11.7264 11.5196 10.6854C12.3681 9.64432 12.8319 8.34282 12.8328 7C12.8328 6.84529 12.8943 6.69692 13.0038 6.58752C13.1132 6.47812 13.2616 6.41667 13.4164 6.41667C13.5712 6.41667 13.7196 6.47812 13.8291 6.58752C13.9385 6.69692 14 6.84529 14 7C14 8.85651 13.2622 10.637 11.9489 11.9497C10.6356 13.2625 8.85432 14 6.99701 14Z"
+                fill="currentColor"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_417_21408">
+                <rect width="14" height="14" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>`;_componentStyle=d(m);ngAfterViewInit(){super.ngAfterViewInit(),A(this.htmlElement,this.getStyleClass().join(" ")),this.createIcon(),this.createLabel(),this.initialized=!0}ngOnChanges(o){super.ngOnChanges(o);let{buttonProps:e}=o;if(e){let n=e.currentValue;for(let i in n)this[i]=n[i]}}getStyleClass(){let o=[f.button,f.component];return this.icon&&!this.label&&F(this.htmlElement.textContent)&&o.push(f.iconOnly),this.loading&&(o.push(f.disabled,f.loading),!this.icon&&this.label&&o.push(f.labelOnly),this.icon&&!this.label&&!F(this.htmlElement.textContent)&&o.push(f.iconOnly)),this.text&&o.push("p-button-text"),this.severity&&o.push(`p-button-${this.severity}`),this.plain&&o.push("p-button-plain"),this.raised&&o.push("p-button-raised"),this.size&&o.push(`p-button-${this.size}`),this.outlined&&o.push("p-button-outlined"),this.rounded&&o.push("p-button-rounded"),this.size==="small"&&o.push("p-button-sm"),this.size==="large"&&o.push("p-button-lg"),this.hasFluid&&o.push("p-button-fluid"),o}get hasFluid(){let e=this.el.nativeElement.closest("p-fluid");return F(this.fluid)?!!e:this.fluid}setStyleClass(){let o=this.getStyleClass();this.removeExistingSeverityClass(),this.htmlElement.classList.remove(...this._internalClasses),this.htmlElement.classList.add(...o)}removeExistingSeverityClass(){let o=["success","info","warn","danger","help","primary","secondary","contrast"],e=this.htmlElement.classList.value.split(" ").find(n=>o.some(i=>n===`p-button-${i}`));e&&this.htmlElement.classList.remove(e)}createLabel(){if(!k(this.htmlElement,".p-button-label")&&this.label){let e=this.document.createElement("span");this.icon&&!this.label&&e.setAttribute("aria-hidden","true"),e.className="p-button-label",e.appendChild(this.document.createTextNode(this.label)),this.htmlElement.appendChild(e)}}createIcon(){if(!k(this.htmlElement,".p-button-icon")&&(this.icon||this.loading)){let e=this.document.createElement("span");e.className="p-button-icon",e.setAttribute("aria-hidden","true");let n=this.label?"p-button-icon-"+this.iconPos:null;n&&A(e,n);let i=this.getIconClass();i&&A(e,i),!this.loadingIcon&&this.loading&&(e.innerHTML=this.spinnerIcon),this.htmlElement.insertBefore(e,this.htmlElement.firstChild)}}updateLabel(){let o=k(this.htmlElement,".p-button-label");if(!this.label){o&&this.htmlElement.removeChild(o);return}o?o.textContent=this.label:this.createLabel()}updateIcon(){let o=k(this.htmlElement,".p-button-icon"),e=k(this.htmlElement,".p-button-label");this.loading&&!this.loadingIcon&&o?o.innerHTML=this.spinnerIcon:o?.innerHTML&&(o.innerHTML=""),o?this.iconPos?o.className="p-button-icon "+(e?"p-button-icon-"+this.iconPos:"")+" "+this.getIconClass():o.className="p-button-icon "+this.getIconClass():this.createIcon()}getIconClass(){return this.loading?"p-button-loading-icon "+(this.loadingIcon?this.loadingIcon:"p-icon"):this.icon||"p-hidden"}ngOnDestroy(){this.initialized=!1,super.ngOnDestroy()}static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275dir=y({type:t,selectors:[["","pButton",""]],contentQueries:function(e,n,i){e&1&&(Q(i,n.iconSignal,xt,5),Q(i,n.labelSignal,yt,5)),e&2&&Y(2)},hostVars:4,hostBindings:function(e,n){e&2&&D("p-button-icon-only",n.isIconOnly())("p-button-text",n.isTextButton())},inputs:{iconPos:"iconPos",loadingIcon:"loadingIcon",loading:"loading",severity:"severity",raised:[2,"raised","raised",a],rounded:[2,"rounded","rounded",a],text:[2,"text","text",a],outlined:[2,"outlined","outlined",a],size:"size",plain:[2,"plain","plain",a],fluid:[2,"fluid","fluid",a],label:"label",icon:"icon",buttonProps:"buttonProps"},features:[T([m]),p,N]})}return t})(),Vt=(()=>{class t extends ${type="button";iconPos="left";icon;badge;label;disabled;loading=!1;loadingIcon;raised=!1;rounded=!1;text=!1;plain=!1;severity;outlined=!1;link=!1;tabindex;size;variant;style;styleClass;badgeClass;badgeSeverity="secondary";ariaLabel;autofocus;fluid;onClick=new E;onFocus=new E;onBlur=new E;contentTemplate;loadingIconTemplate;iconTemplate;_buttonProps;get buttonProps(){return this._buttonProps}set buttonProps(o){this._buttonProps=o,o&&typeof o=="object"&&Object.entries(o).forEach(([e,n])=>this[`_${e}`]!==n&&(this[`_${e}`]=n))}get hasFluid(){let e=this.el.nativeElement.closest("p-fluid");return F(this.fluid)?!!e:this.fluid}_componentStyle=d(m);templates;_contentTemplate;_iconTemplate;_loadingIconTemplate;ngAfterContentInit(){this.templates?.forEach(o=>{switch(o.getType()){case"content":this._contentTemplate=o.template;break;case"icon":this._iconTemplate=o.template;break;case"loadingicon":this._loadingIconTemplate=o.template;break;default:this._contentTemplate=o.template;break}})}ngOnChanges(o){super.ngOnChanges(o);let{buttonProps:e}=o;if(e){let n=e.currentValue;for(let i in n)this[i]=n[i]}}spinnerIconClass(){return Object.entries(this.iconClass()).filter(([,o])=>!!o).reduce((o,[e])=>o+` ${e}`,"p-button-loading-icon")}iconClass(){return{[`p-button-loading-icon pi-spin ${this.loadingIcon??""}`]:this.loading,"p-button-icon":!0,"p-button-icon-left":this.iconPos==="left"&&this.label,"p-button-icon-right":this.iconPos==="right"&&this.label,"p-button-icon-top":this.iconPos==="top"&&this.label,"p-button-icon-bottom":this.iconPos==="bottom"&&this.label}}get buttonClass(){return{"p-button p-component":!0,"p-button-icon-only":(this.icon||this.iconTemplate||this._iconTemplate||this.loadingIcon||this.loadingIconTemplate||this._loadingIconTemplate)&&!this.label,"p-button-vertical":(this.iconPos==="top"||this.iconPos==="bottom")&&this.label,"p-button-loading":this.loading,"p-button-loading-label-only":this.loading&&!this.icon&&this.label&&!this.loadingIcon&&this.iconPos==="left","p-button-link":this.link,[`p-button-${this.severity}`]:this.severity,"p-button-raised":this.raised,"p-button-rounded":this.rounded,"p-button-text":this.text||this.variant=="text","p-button-outlined":this.outlined||this.variant=="outlined","p-button-sm":this.size==="small","p-button-lg":this.size==="large","p-button-plain":this.plain,"p-button-fluid":this.hasFluid,[`${this.styleClass}`]:this.styleClass}}static \u0275fac=(()=>{let o;return function(n){return(o||(o=b(t)))(n||t)}})();static \u0275cmp=S({type:t,selectors:[["p-button"]],contentQueries:function(e,n,i){if(e&1&&(_(i,kt,5),_(i,_t,5),_(i,It,5),_(i,st,4)),e&2){let c;I(c=w())&&(n.contentTemplate=c.first),I(c=w())&&(n.loadingIconTemplate=c.first),I(c=w())&&(n.iconTemplate=c.first),I(c=w())&&(n.templates=c)}},inputs:{type:"type",iconPos:"iconPos",icon:"icon",badge:"badge",label:"label",disabled:[2,"disabled","disabled",a],loading:[2,"loading","loading",a],loadingIcon:"loadingIcon",raised:[2,"raised","raised",a],rounded:[2,"rounded","rounded",a],text:[2,"text","text",a],plain:[2,"plain","plain",a],severity:"severity",outlined:[2,"outlined","outlined",a],link:[2,"link","link",a],tabindex:[2,"tabindex","tabindex",nt],size:"size",variant:"variant",style:"style",styleClass:"styleClass",badgeClass:"badgeClass",badgeSeverity:"badgeSeverity",ariaLabel:"ariaLabel",autofocus:[2,"autofocus","autofocus",a],fluid:[2,"fluid","fluid",a],buttonProps:"buttonProps"},outputs:{onClick:"onClick",onFocus:"onFocus",onBlur:"onBlur"},features:[T([m]),p,N],ngContentSelectors:wt,decls:7,vars:14,consts:[["pRipple","",3,"click","focus","blur","ngStyle","disabled","ngClass","pAutoFocus"],[4,"ngTemplateOutlet"],[4,"ngIf"],["class","p-button-label",4,"ngIf"],[3,"value","severity",4,"ngIf"],[4,"ngTemplateOutlet","ngTemplateOutletContext"],[3,"ngClass",4,"ngIf"],[3,"styleClass","spin",4,"ngIf"],[3,"ngClass"],[3,"styleClass","spin"],[3,"ngIf"],[3,"class","ngClass",4,"ngIf"],[1,"p-button-label"],[3,"value","severity"]],template:function(e,n){e&1&&(W(),x(0,"button",0),K("click",function(c){return n.onClick.emit(c)})("focus",function(c){return n.onFocus.emit(c)})("blur",function(c){return n.onBlur.emit(c)}),X(1),v(2,Tt,1,0,"ng-container",1)(3,Dt,3,5,"ng-container",2)(4,At,3,5,"ng-container",2)(5,Lt,2,3,"span",3)(6,Nt,1,2,"p-badge",4),C()),e&2&&(l("ngStyle",n.style)("disabled",n.disabled||n.loading)("ngClass",n.buttonClass)("pAutoFocus",n.autofocus),g("type",n.type)("aria-label",n.ariaLabel)("data-pc-name","button")("data-pc-section","root")("tabindex",n.tabindex),u(2),l("ngTemplateOutlet",n.contentTemplate||n._contentTemplate),u(),l("ngIf",n.loading),u(),l("ngIf",!n.loading),u(),l("ngIf",!n.contentTemplate&&!n._contentTemplate&&n.label),u(),l("ngIf",!n.contentTemplate&&!n._contentTemplate&&n.badge))},dependencies:[R,rt,it,at,lt,ft,vt,$t,ht,gt,L],encapsulation:2,changeDetection:0})}return t})(),Io=(()=>{class t{static \u0275fac=function(e){return new(e||t)};static \u0275mod=P({type:t});static \u0275inj=B({imports:[R,Vt,L,L]})}return t})();export{$t as a,vt as b,Kt as c,_o as d,Vt as e,Io as f};
