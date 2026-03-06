@@ -1,1 +1,81 @@
-import{B as J,E as L,M as R,O as M,T as h,U as X,W as v,Y as o,Ya as N,a as I,gb as z,ia as w,ib as W,o as p,oa as S,q as f,s as V,sc as Z,w as F,x as P,y as q}from"./35.js";var c=class{},Q=(()=>{class n extends c{getTranslation(e){return p({})}static \u0275fac=(()=>{let e;return function(s){return(e||(e=w(n)))(s||n)}})();static \u0275prov=h({token:n,factory:n.\u0275fac})}return n})(),b=class{},Y=(()=>{class n{handle(e){return e.key}static \u0275fac=function(t){return new(t||n)};static \u0275prov=h({token:n,factory:n.\u0275fac})}return n})();function j(n,r){if(n===r)return!0;if(n===null||r===null)return!1;if(n!==n&&r!==r)return!0;let e=typeof n,t=typeof r,s,i,a;if(e==t&&e=="object")if(Array.isArray(n)){if(!Array.isArray(r))return!1;if((s=n.length)==r.length){for(i=0;i<s;i++)if(!j(n[i],r[i]))return!1;return!0}}else{if(Array.isArray(r))return!1;a=Object.create(null);for(i in n){if(!j(n[i],r[i]))return!1;a[i]=!0}for(i in r)if(!(i in a)&&typeof r[i]<"u")return!1;return!0}return!1}function u(n){return typeof n<"u"&&n!==null}function D(n){return E(n)&&!H(n)&&n!==null}function E(n){return typeof n=="object"}function H(n){return Array.isArray(n)}function $(n){return typeof n=="string"}function ne(n){return typeof n=="function"}function K(n,r){let e=Object.assign({},n);return E(n)?(E(n)&&E(r)&&Object.keys(r).forEach(t=>{D(r[t])?t in n?e[t]=K(n[t],r[t]):Object.assign(e,{[t]:r[t]}):Object.assign(e,{[t]:r[t]})}),e):K({},r)}function x(n,r){let e=r.split(".");r="";do r+=e.shift(),u(n)&&u(n[r])&&(D(n[r])||H(n[r])||!e.length)?(n=n[r],r=""):e.length?r+=".":n=void 0;while(e.length);return n}function se(n,r,e){let t=r.split("."),s=n;for(let i=0;i<t.length;i++){let a=t[i];i===t.length-1?s[a]=e:((!s[a]||!D(s[a]))&&(s[a]={}),s=s[a])}}var d=class{},k=(()=>{class n extends d{templateMatcher=/{{\s?([^{}\s]*)\s?}}/g;interpolate(e,t){if($(e))return this.interpolateString(e,t);if(ne(e))return this.interpolateFunction(e,t)}interpolateFunction(e,t){return e(t)}interpolateString(e,t){return t?e.replace(this.templateMatcher,(s,i)=>{let a=x(t,i);return u(a)?a:s}):e}static \u0275fac=(()=>{let e;return function(s){return(e||(e=w(n)))(s||n)}})();static \u0275prov=h({token:n,factory:n.\u0275fac})}return n})(),g=class{},ee=(()=>{class n extends g{compile(e,t){return e}compileTranslations(e,t){return e}static \u0275fac=(()=>{let e;return function(s){return(e||(e=w(n)))(s||n)}})();static \u0275prov=h({token:n,factory:n.\u0275fac})}return n})(),m=class{defaultLang;currentLang=this.defaultLang;translations={};langs=[];onTranslationChange=new S;onLangChange=new S;onDefaultLangChange=new S},O=new v("ISOLATE_TRANSLATE_SERVICE"),U=new v("USE_DEFAULT_LANG"),_=new v("DEFAULT_LANGUAGE"),B=new v("USE_EXTEND"),C=n=>f(n)?n:p(n),G=(()=>{class n{store;currentLoader;compiler;parser;missingTranslationHandler;useDefaultLang;extend;loadingTranslations;pending=!1;_translationRequests={};lastUseLanguage=null;get onTranslationChange(){return this.store.onTranslationChange}get onLangChange(){return this.store.onLangChange}get onDefaultLangChange(){return this.store.onDefaultLangChange}get defaultLang(){return this.store.defaultLang}set defaultLang(e){this.store.defaultLang=e}get currentLang(){return this.store.currentLang}set currentLang(e){this.store.currentLang=e}get langs(){return this.store.langs}set langs(e){this.store.langs=e}get translations(){return this.store.translations}set translations(e){this.store.translations=e}constructor(e,t,s,i,a,A=!0,l=!1,T=!1,y){this.store=e,this.currentLoader=t,this.compiler=s,this.parser=i,this.missingTranslationHandler=a,this.useDefaultLang=A,this.extend=T,l&&(this.store=new m),y&&this.setDefaultLang(y)}setDefaultLang(e){if(e===this.defaultLang)return;let t=this.retrieveTranslations(e);typeof t<"u"?(this.defaultLang==null&&(this.defaultLang=e),t.pipe(L(1)).subscribe(()=>{this.changeDefaultLang(e)})):this.changeDefaultLang(e)}getDefaultLang(){return this.defaultLang}use(e){if(this.lastUseLanguage=e,e===this.currentLang)return p(this.translations[e]);this.currentLang||(this.currentLang=e);let t=this.retrieveTranslations(e);return f(t)?(t.pipe(L(1)).subscribe(()=>{this.changeLang(e)}),t):(this.changeLang(e),p(this.translations[e]))}changeLang(e){e===this.lastUseLanguage&&(this.currentLang=e,this.onLangChange.emit({lang:e,translations:this.translations[e]}),this.defaultLang==null&&this.changeDefaultLang(e))}retrieveTranslations(e){if(typeof this.translations[e]>"u"||this.extend)return this._translationRequests[e]=this._translationRequests[e]||this.loadAndCompileTranslations(e),this._translationRequests[e]}getTranslation(e){return this.loadAndCompileTranslations(e)}loadAndCompileTranslations(e){this.pending=!0;let t=this.currentLoader.getTranslation(e).pipe(R(1),L(1));return this.loadingTranslations=t.pipe(V(s=>this.compiler.compileTranslations(s,e)),R(1),L(1)),this.loadingTranslations.subscribe({next:s=>{this.translations[e]=this.extend&&this.translations[e]?I(I({},s),this.translations[e]):s,this.updateLangs(),this.pending=!1},error:s=>{this.pending=!1}}),t}setTranslation(e,t,s=!1){let i=this.compiler.compileTranslations(t,e);(s||this.extend)&&this.translations[e]?this.translations[e]=K(this.translations[e],i):this.translations[e]=i,this.updateLangs(),this.onTranslationChange.emit({lang:e,translations:this.translations[e]})}getLangs(){return this.langs}addLangs(e){let t=e.filter(s=>!this.langs.includes(s));t.length>0&&(this.langs=[...this.langs,...t])}updateLangs(){this.addLangs(Object.keys(this.translations))}getParsedResultForKey(e,t,s){let i;if(e&&(i=this.runInterpolation(x(e,t),s)),i===void 0&&this.defaultLang!=null&&this.defaultLang!==this.currentLang&&this.useDefaultLang&&(i=this.runInterpolation(x(this.translations[this.defaultLang],t),s)),i===void 0){let a={key:t,translateService:this};typeof s<"u"&&(a.interpolateParams=s),i=this.missingTranslationHandler.handle(a)}return i!==void 0?i:t}runInterpolation(e,t){if(H(e))return e.map(s=>this.runInterpolation(s,t));if(D(e)){let s={};for(let i in e){let a=this.runInterpolation(e[i],t);a!==void 0&&(s[i]=a)}return s}else return this.parser.interpolate(e,t)}getParsedResult(e,t,s){if(t instanceof Array){let i={},a=!1;for(let l of t)i[l]=this.getParsedResultForKey(e,l,s),a=a||f(i[l]);if(!a)return i;let A=t.map(l=>C(i[l]));return q(A).pipe(V(l=>{let T={};return l.forEach((y,te)=>{T[t[te]]=y}),T}))}return this.getParsedResultForKey(e,t,s)}get(e,t){if(!u(e)||!e.length)throw new Error('Parameter "key" is required and cannot be empty');return this.pending?this.loadingTranslations.pipe(J(s=>C(this.getParsedResult(s,e,t)))):C(this.getParsedResult(this.translations[this.currentLang],e,t))}getStreamOnTranslationChange(e,t){if(!u(e)||!e.length)throw new Error('Parameter "key" is required and cannot be empty');return F(P(()=>this.get(e,t)),this.onTranslationChange.pipe(M(s=>{let i=this.getParsedResult(s.translations,e,t);return C(i)})))}stream(e,t){if(!u(e)||!e.length)throw new Error('Parameter "key" required');return F(P(()=>this.get(e,t)),this.onLangChange.pipe(M(s=>{let i=this.getParsedResult(s.translations,e,t);return C(i)})))}instant(e,t){if(!u(e)||e.length===0)throw new Error('Parameter "key" is required and cannot be empty');let s=this.getParsedResult(this.translations[this.currentLang],e,t);return f(s)?Array.isArray(e)?e.reduce((i,a)=>(i[a]=a,i),{}):e:s}set(e,t,s=this.currentLang){se(this.translations[s],e,$(t)?this.compiler.compile(t,s):this.compiler.compileTranslations(t,s)),this.updateLangs(),this.onTranslationChange.emit({lang:s,translations:this.translations[s]})}changeDefaultLang(e){this.defaultLang=e,this.onDefaultLangChange.emit({lang:e,translations:this.translations[e]})}reloadLang(e){return this.resetLang(e),this.loadAndCompileTranslations(e)}resetLang(e){delete this._translationRequests[e],delete this.translations[e]}getBrowserLang(){if(typeof window>"u"||!window.navigator)return;let e=this.getBrowserCultureLang();return e?e.split(/[-_]/)[0]:void 0}getBrowserCultureLang(){if(!(typeof window>"u"||typeof window.navigator>"u"))return window.navigator.languages?window.navigator.languages[0]:window.navigator.language||window.navigator.browserLanguage||window.navigator.userLanguage}static \u0275fac=function(t){return new(t||n)(o(m),o(c),o(g),o(d),o(b),o(U),o(O),o(B),o(_))};static \u0275prov=h({token:n,factory:n.\u0275fac,providedIn:"root"})}return n})();var ve=(()=>{class n{translate;_ref;value="";lastKey=null;lastParams=[];onTranslationChange;onLangChange;onDefaultLangChange;constructor(e,t){this.translate=e,this._ref=t}updateValue(e,t,s){let i=a=>{this.value=a!==void 0?a:e,this.lastKey=e,this._ref.markForCheck()};if(s){let a=this.translate.getParsedResult(s,e,t);f(a)?a.subscribe(i):i(a)}this.translate.get(e,t).subscribe(i)}transform(e,...t){if(!e||!e.length)return e;if(j(e,this.lastKey)&&j(t,this.lastParams))return this.value;let s;if(u(t[0])&&t.length)if($(t[0])&&t[0].length){let i=t[0].replace(/(')?([a-zA-Z0-9_]+)(')?(\s)?:/g,'"$2":').replace(/:(\s)?(')(.*?)(')/g,':"$3"');try{s=JSON.parse(i)}catch(a){throw new SyntaxError(`Wrong parameter in TranslatePipe. Expected a valid Object, received: ${t[0]}`)}}else D(t[0])&&(s=t[0]);return this.lastKey=e,this.lastParams=t,this.updateValue(e,s),this._dispose(),this.onTranslationChange||(this.onTranslationChange=this.translate.onTranslationChange.subscribe(i=>{this.lastKey&&i.lang===this.translate.currentLang&&(this.lastKey=null,this.updateValue(e,s,i.translations))})),this.onLangChange||(this.onLangChange=this.translate.onLangChange.subscribe(i=>{this.lastKey&&(this.lastKey=null,this.updateValue(e,s,i.translations))})),this.onDefaultLangChange||(this.onDefaultLangChange=this.translate.onDefaultLangChange.subscribe(()=>{this.lastKey&&(this.lastKey=null,this.updateValue(e,s))})),this.value}_dispose(){typeof this.onTranslationChange<"u"&&(this.onTranslationChange.unsubscribe(),this.onTranslationChange=void 0),typeof this.onLangChange<"u"&&(this.onLangChange.unsubscribe(),this.onLangChange=void 0),typeof this.onDefaultLangChange<"u"&&(this.onDefaultLangChange.unsubscribe(),this.onDefaultLangChange=void 0)}ngOnDestroy(){this._dispose()}static \u0275fac=function(t){return new(t||n)(N(G,16),N(Z,16))};static \u0275pipe=W({name:"translate",type:n,pure:!1});static \u0275prov=h({token:n,factory:n.\u0275fac})}return n})();var Ce=(()=>{class n{static forRoot(e={}){return{ngModule:n,providers:[e.loader||{provide:c,useClass:Q},e.compiler||{provide:g,useClass:ee},e.parser||{provide:d,useClass:k},e.missingTranslationHandler||{provide:b,useClass:Y},m,{provide:O,useValue:e.isolate},{provide:U,useValue:e.useDefaultLang},{provide:B,useValue:e.extend},{provide:_,useValue:e.defaultLanguage},G]}}static forChild(e={}){return{ngModule:n,providers:[e.loader||{provide:c,useClass:Q},e.compiler||{provide:g,useClass:ee},e.parser||{provide:d,useClass:k},e.missingTranslationHandler||{provide:b,useClass:Y},{provide:O,useValue:e.isolate},{provide:U,useValue:e.useDefaultLang},{provide:B,useValue:e.extend},{provide:_,useValue:e.defaultLanguage},G]}}static \u0275fac=function(t){return new(t||n)};static \u0275mod=z({type:n});static \u0275inj=X({})}return n})();export{c as a,G as b,ve as c,Ce as d};
+import{Ea as s,Ha as P,Ka as R,j as k,m as N,u as H}from"./41.js";import{Cb as f,Db as u,Eb as T,Ib as D,Mb as F,Nb as i,Ob as L,Pb as j,Qa as I,T as x,Ta as g,U as _,Yb as d,Z as y,Zb as A,_b as S,ec as V,fa as b,fb as C,ga as z,gb as w,ia as c,jb as E,kb as l,oa as $,oc as h,rb as v,sb as n,ub as M,vb as B,wb as m}from"./34.js";var O=["*"];function U(a,o){if(a&1&&(f(0,"span",3),A(1),u()),a&2){let e=i();g(),S(e.label)}}function G(a,o){if(a&1&&T(0,"span",5),a&2){let e=i(2);m(e.icon),n("ngClass","p-avatar-icon")}}function J(a,o){if(a&1&&l(0,G,1,3,"span",4),a&2){let e=i(),r=d(5);n("ngIf",e.icon)("ngIfElse",r)}}function K(a,o){if(a&1){let e=D();f(0,"img",7),F("error",function(t){b(e);let p=i(2);return z(p.imageError(t))}),u()}if(a&2){let e=i(2);n("src",e.image,I),v("aria-label",e.ariaLabel)}}function Q(a,o){if(a&1&&l(0,K,1,2,"img",6),a&2){let e=i();n("ngIf",e.image)}}var W=({dt:a})=>`
+.p-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: ${a("avatar.width")};
+    height: ${a("avatar.height")};
+    font-size: ${a("avatar.font.size")};
+    color: ${a("avatar.color")};
+    background: ${a("avatar.background")};
+    border-radius: ${a("avatar.border.radius")};
+}
+
+.p-avatar-image {
+    background: transparent;
+}
+
+.p-avatar-circle {
+    border-radius: 50%;
+}
+
+.p-avatar-circle img {
+    border-radius: 50%;
+}
+
+.p-avatar-icon {
+    font-size: ${a("avatar.icon.size")};
+    width: ${a("avatar.icon.size")};
+    height: ${a("avatar.icon.size")};
+}
+
+.p-avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+.p-avatar-lg {
+    width: ${a("avatar.lg.width")};
+    height: ${a("avatar.lg.width")};
+    font-size: ${a("avatar.lg.font.size")};
+}
+
+.p-avatar-lg .p-avatar-icon {
+    font-size: ${a("avatar.lg.icon.size")};
+    width: ${a("avatar.lg.icon.size")};
+    height: ${a("avatar.lg.icon.size")};
+}
+
+.p-avatar-xl {
+    width: ${a("avatar.xl.width")};
+    height: ${a("avatar.xl.width")};
+    font-size: ${a("avatar.xl.font.size")};
+}
+
+.p-avatar-xl .p-avatar-icon {
+    font-size: ${a("avatar.xl.font.size")};
+    width: ${a("avatar.xl.icon.size")};
+    height: ${a("avatar.xl.icon.size")};
+}
+
+.p-avatar-group {
+    display: flex;
+    align-items: center;
+}
+
+.p-avatar-group .p-avatar + .p-avatar {
+    margin-inline-start: ${a("avatar.group.offset")};
+}
+
+.p-avatar-group .p-avatar {
+    border: 2px solid ${a("avatar.group.border.color")};
+}
+
+.p-avatar-group .p-avatar-lg + .p-avatar-lg {
+    margin-inline-start: ${a("avatar.lg.group.offset")};
+}
+
+.p-avatar-group .p-avatar-xl + .p-avatar-xl {
+    margin-inline-start: ${a("avatar.xl.group.offset")};
+}
+`,X={root:({props:a})=>["p-avatar p-component",{"p-avatar-image":a.image!=null,"p-avatar-circle":a.shape==="circle","p-avatar-lg":a.size==="large","p-avatar-xl":a.size==="xlarge"}],label:"p-avatar-label",icon:"p-avatar-icon"},q=(()=>{class a extends P{name="avatar";theme=W;classes=X;static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275prov=x({token:a,factory:a.\u0275fac})}return a})();var Y=(()=>{class a extends R{label;icon;image;size="normal";shape="square";style;styleClass;ariaLabel;ariaLabelledBy;onImageError=new $;_componentStyle=y(q);imageError(e){this.onImageError.emit(e)}get hostClass(){return this.styleClass}static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275cmp=C({type:a,selectors:[["p-avatar"]],hostVars:19,hostBindings:function(r,t){r&2&&(v("data-pc-name","avatar")("aria-label",t.ariaLabel)("aria-labelledby",t.ariaLabelledBy),B(t.style),m(t.hostClass),M("p-avatar",!0)("p-component",!0)("p-avatar-circle",t.shape==="circle")("p-avatar-lg",t.size==="large")("p-avatar-xl",t.size==="xlarge")("p-avatar-image",t.image!=null))},inputs:{label:"label",icon:"icon",image:"image",size:"size",shape:"shape",style:"style",styleClass:"styleClass",ariaLabel:"ariaLabel",ariaLabelledBy:"ariaLabelledBy"},outputs:{onImageError:"onImageError"},features:[V([q]),E],ngContentSelectors:O,decls:6,vars:2,consts:[["iconTemplate",""],["imageTemplate",""],["class","p-avatar-text",4,"ngIf","ngIfElse"],[1,"p-avatar-text"],[3,"class","ngClass",4,"ngIf","ngIfElse"],[3,"ngClass"],[3,"src","error",4,"ngIf"],[3,"error","src"]],template:function(r,t){if(r&1&&(L(),j(0),l(1,U,2,1,"span",2)(2,J,1,2,"ng-template",null,0,h)(4,Q,1,1,"ng-template",null,1,h)),r&2){let p=d(3);g(),n("ngIf",t.label)("ngIfElse",p)}},dependencies:[H,k,N,s],encapsulation:2,changeDetection:0})}return a})(),fa=(()=>{class a{static \u0275fac=function(r){return new(r||a)};static \u0275mod=w({type:a});static \u0275inj=_({imports:[Y,s,s]})}return a})();export{Y as a,fa as b};

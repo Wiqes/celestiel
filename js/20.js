@@ -1,81 +1,116 @@
-import{Ea as s,Ha as P,Ka as R,j as k,m as N,u as H}from"./42.js";import{Cb as f,Db as u,Eb as T,Ib as D,Mb as F,Nb as i,Ob as L,Pb as j,Qa as I,T as x,Ta as g,U as _,Yb as d,Z as y,Zb as A,_b as S,ec as V,fa as b,fb as C,ga as z,gb as w,ia as c,jb as E,kb as l,oa as $,oc as h,rb as v,sb as n,ub as M,vb as B,wb as m}from"./35.js";var O=["*"];function U(a,o){if(a&1&&(f(0,"span",3),A(1),u()),a&2){let e=i();g(),S(e.label)}}function G(a,o){if(a&1&&T(0,"span",5),a&2){let e=i(2);m(e.icon),n("ngClass","p-avatar-icon")}}function J(a,o){if(a&1&&l(0,G,1,3,"span",4),a&2){let e=i(),r=d(5);n("ngIf",e.icon)("ngIfElse",r)}}function K(a,o){if(a&1){let e=D();f(0,"img",7),F("error",function(t){b(e);let p=i(2);return z(p.imageError(t))}),u()}if(a&2){let e=i(2);n("src",e.image,I),v("aria-label",e.ariaLabel)}}function Q(a,o){if(a&1&&l(0,K,1,2,"img",6),a&2){let e=i();n("ngIf",e.image)}}var W=({dt:a})=>`
-.p-avatar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: ${a("avatar.width")};
-    height: ${a("avatar.height")};
-    font-size: ${a("avatar.font.size")};
-    color: ${a("avatar.color")};
-    background: ${a("avatar.background")};
-    border-radius: ${a("avatar.border.radius")};
+import{Da as A,Ea as g,Ha as q,Ka as R,j as N,m as Q,q as V,r as O,u as z}from"./41.js";import{Cb as l,Db as p,Eb as I,Hb as M,Nb as m,Rb as v,T as _,Ta as a,Tb as y,U as w,Ub as h,Z as T,Zb as B,ac as F,ec as P,fb as k,gb as x,gc as D,hc as $,ia as b,jb as S,kb as f,rb as s,sb as r,tb as c,wb as u,wc as j,xc as E}from"./34.js";var H=["content"],J=(e,o)=>({"p-progressbar p-component":!0,"p-progressbar-determinate":e,"p-progressbar-indeterminate":o}),K=e=>({$implicit:e});function L(e,o){if(e&1&&(l(0,"div"),B(1),p()),e&2){let t=m(2);c("display",t.value!=null&&t.value!==0?"flex":"none"),s("data-pc-section","label"),a(),F("",t.value,"",t.unit,"")}}function U(e,o){e&1&&M(0)}function W(e,o){if(e&1&&(l(0,"div",3)(1,"div",4),f(2,L,2,5,"div",5)(3,U,1,0,"ng-container",6),p()()),e&2){let t=m();u(t.valueStyleClass),c("width",t.value+"%")("background",t.color),r("ngClass","p-progressbar-value p-progressbar-value-animate"),s("data-pc-section","value"),a(2),r("ngIf",t.showValue&&!t.contentTemplate&&!t._contentTemplate),a(),r("ngTemplateOutlet",t.contentTemplate||t._contentTemplate)("ngTemplateOutletContext",D(11,K,t.value))}}function X(e,o){if(e&1&&(l(0,"div",7),I(1,"div",8),p()),e&2){let t=m();u(t.valueStyleClass),r("ngClass","p-progressbar-indeterminate-container"),s("data-pc-section","container"),a(),c("background",t.color),s("data-pc-section","value")}}var Y=({dt:e})=>`
+.p-progressbar {
+    position: relative;
+    overflow: hidden;
+    height: ${e("progressbar.height")};
+    background: ${e("progressbar.background")};
+    border-radius: ${e("progressbar.border.radius")};
 }
 
-.p-avatar-image {
-    background: transparent;
+.p-progressbar-value {
+    margin: 0;
+    background: ${e("progressbar.value.background")};
 }
 
-.p-avatar-circle {
-    border-radius: 50%;
+.p-progressbar-label {
+    color: ${e("progressbar.label.color")};
+    font-size: ${e("progressbar.label.font.size")};
+    font-weight: ${e("progressbar.label.font.weight")};
 }
 
-.p-avatar-circle img {
-    border-radius: 50%;
-}
-
-.p-avatar-icon {
-    font-size: ${a("avatar.icon.size")};
-    width: ${a("avatar.icon.size")};
-    height: ${a("avatar.icon.size")};
-}
-
-.p-avatar img {
-    width: 100%;
+.p-progressbar-determinate .p-progressbar-value {
     height: 100%;
-}
-
-.p-avatar-lg {
-    width: ${a("avatar.lg.width")};
-    height: ${a("avatar.lg.width")};
-    font-size: ${a("avatar.lg.font.size")};
-}
-
-.p-avatar-lg .p-avatar-icon {
-    font-size: ${a("avatar.lg.icon.size")};
-    width: ${a("avatar.lg.icon.size")};
-    height: ${a("avatar.lg.icon.size")};
-}
-
-.p-avatar-xl {
-    width: ${a("avatar.xl.width")};
-    height: ${a("avatar.xl.width")};
-    font-size: ${a("avatar.xl.font.size")};
-}
-
-.p-avatar-xl .p-avatar-icon {
-    font-size: ${a("avatar.xl.font.size")};
-    width: ${a("avatar.xl.icon.size")};
-    height: ${a("avatar.xl.icon.size")};
-}
-
-.p-avatar-group {
+    width: 0%;
+    position: absolute;
+    display: none;
     display: flex;
     align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: width 1s ease-in-out;
 }
 
-.p-avatar-group .p-avatar + .p-avatar {
-    margin-inline-start: ${a("avatar.group.offset")};
+.p-progressbar-determinate .p-progressbar-label {
+    display: inline-flex;
 }
 
-.p-avatar-group .p-avatar {
-    border: 2px solid ${a("avatar.group.border.color")};
+.p-progressbar-indeterminate .p-progressbar-value::before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    top: 0;
+    inset-inline-start: 0;
+    bottom: 0;
+    will-change: inset-inline-start, inset-inline-end;
+    animation: p-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
 }
 
-.p-avatar-group .p-avatar-lg + .p-avatar-lg {
-    margin-inline-start: ${a("avatar.lg.group.offset")};
+.p-progressbar-indeterminate .p-progressbar-value::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    top: 0;
+    inset-inline-start: 0;
+    bottom: 0;
+    will-change: inset-inline-start, inset-inline-end;
+    animation: p-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation-delay: 1.15s;
 }
 
-.p-avatar-group .p-avatar-xl + .p-avatar-xl {
-    margin-inline-start: ${a("avatar.xl.group.offset")};
+@-webkit-keyframes p-progressbar-indeterminate-anim {
+    0% {
+        inset-inline-start: -35%;
+        inset-inline-end: 100%;
+    }
+    60% {
+        inset-inline-start: 100%;
+        inset-inline-end: -90%;
+    }
+    100% {
+        inset-inline-start: 100%;
+        inset-inline-end: -90%;
+    }
 }
-`,X={root:({props:a})=>["p-avatar p-component",{"p-avatar-image":a.image!=null,"p-avatar-circle":a.shape==="circle","p-avatar-lg":a.size==="large","p-avatar-xl":a.size==="xlarge"}],label:"p-avatar-label",icon:"p-avatar-icon"},q=(()=>{class a extends P{name="avatar";theme=W;classes=X;static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275prov=x({token:a,factory:a.\u0275fac})}return a})();var Y=(()=>{class a extends R{label;icon;image;size="normal";shape="square";style;styleClass;ariaLabel;ariaLabelledBy;onImageError=new $;_componentStyle=y(q);imageError(e){this.onImageError.emit(e)}get hostClass(){return this.styleClass}static \u0275fac=(()=>{let e;return function(t){return(e||(e=c(a)))(t||a)}})();static \u0275cmp=C({type:a,selectors:[["p-avatar"]],hostVars:19,hostBindings:function(r,t){r&2&&(v("data-pc-name","avatar")("aria-label",t.ariaLabel)("aria-labelledby",t.ariaLabelledBy),B(t.style),m(t.hostClass),M("p-avatar",!0)("p-component",!0)("p-avatar-circle",t.shape==="circle")("p-avatar-lg",t.size==="large")("p-avatar-xl",t.size==="xlarge")("p-avatar-image",t.image!=null))},inputs:{label:"label",icon:"icon",image:"image",size:"size",shape:"shape",style:"style",styleClass:"styleClass",ariaLabel:"ariaLabel",ariaLabelledBy:"ariaLabelledBy"},outputs:{onImageError:"onImageError"},features:[V([q]),E],ngContentSelectors:O,decls:6,vars:2,consts:[["iconTemplate",""],["imageTemplate",""],["class","p-avatar-text",4,"ngIf","ngIfElse"],[1,"p-avatar-text"],[3,"class","ngClass",4,"ngIf","ngIfElse"],[3,"ngClass"],[3,"src","error",4,"ngIf"],[3,"error","src"]],template:function(r,t){if(r&1&&(L(),j(0),l(1,U,2,1,"span",2)(2,J,1,2,"ng-template",null,0,h)(4,Q,1,1,"ng-template",null,1,h)),r&2){let p=d(3);g(),n("ngIf",t.label)("ngIfElse",p)}},dependencies:[H,k,N,s],encapsulation:2,changeDetection:0})}return a})(),fa=(()=>{class a{static \u0275fac=function(r){return new(r||a)};static \u0275mod=w({type:a});static \u0275inj=_({imports:[Y,s,s]})}return a})();export{Y as a,fa as b};
+@keyframes p-progressbar-indeterminate-anim {
+    0% {
+        inset-inline-start: -35%;
+        inset-inline-end: 100%;
+    }
+    60% {
+        inset-inline-start: 100%;
+        inset-inline-end: -90%;
+    }
+    100% {
+        inset-inline-start: 100%;
+        inset-inline-end: -90%;
+    }
+}
+@-webkit-keyframes p-progressbar-indeterminate-anim-short {
+    0% {
+        inset-inline-start: -200%;
+        inset-inline-end: 100%;
+    }
+    60% {
+        inset-inline-start: 107%;
+        inset-inline-end: -8%;
+    }
+    100% {
+        inset-inline-start: 107%;
+        inset-inline-end: -8%;
+    }
+}
+@keyframes p-progressbar-indeterminate-anim-short {
+    0% {
+        inset-inline-start: -200%;
+        inset-inline-end: 100%;
+    }
+    60% {
+        inset-inline-start: 107%;
+        inset-inline-end: -8%;
+    }
+    100% {
+        inset-inline-start: 107%;
+        inset-inline-end: -8%;
+    }
+}
+`,Z={root:({instance:e})=>["p-progressbar p-component",{"p-progressbar-determinate":e.determinate,"p-progressbar-indeterminate":e.indeterminate}],value:"p-progressbar-value",label:"p-progressbar-label"},G=(()=>{class e extends q{name="progressbar";theme=Y;classes=Z;static \u0275fac=(()=>{let t;return function(n){return(t||(t=b(e)))(n||e)}})();static \u0275prov=_({token:e,factory:e.\u0275fac})}return e})();var ee=(()=>{class e extends R{value;showValue=!0;styleClass;valueStyleClass;style;unit="%";mode="determinate";color;contentTemplate;_componentStyle=T(G);templates;_contentTemplate;ngAfterContentInit(){this.templates?.forEach(t=>{switch(t.getType()){case"content":this._contentTemplate=t.template;break;default:this._contentTemplate=t.template}})}static \u0275fac=(()=>{let t;return function(n){return(t||(t=b(e)))(n||e)}})();static \u0275cmp=k({type:e,selectors:[["p-progressBar"],["p-progressbar"],["p-progress-bar"]],contentQueries:function(i,n,C){if(i&1&&(v(C,H,4),v(C,A,4)),i&2){let d;y(d=h())&&(n.contentTemplate=d.first),y(d=h())&&(n.templates=d)}},inputs:{value:[2,"value","value",E],showValue:[2,"showValue","showValue",j],styleClass:"styleClass",valueStyleClass:"valueStyleClass",style:"style",unit:"unit",mode:"mode",color:"color"},features:[P([G]),S],decls:3,vars:15,consts:[["role","progressbar",3,"ngStyle","ngClass"],["style","display:flex",3,"ngClass","class","width","background",4,"ngIf"],[3,"ngClass","class",4,"ngIf"],[2,"display","flex",3,"ngClass"],[1,"p-progressbar-label"],[3,"display",4,"ngIf"],[4,"ngTemplateOutlet","ngTemplateOutletContext"],[3,"ngClass"],[1,"p-progressbar-value","p-progressbar-value-animate"]],template:function(i,n){i&1&&(l(0,"div",0),f(1,W,4,13,"div",1)(2,X,2,7,"div",2),p()),i&2&&(u(n.styleClass),r("ngStyle",n.style)("ngClass",$(12,J,n.mode==="determinate",n.mode==="indeterminate")),s("aria-valuemin",0)("aria-valuenow",n.value)("aria-valuemax",100)("data-pc-name","progressbar")("data-pc-section","root")("aria-label",n.value+n.unit),a(),r("ngIf",n.mode==="determinate"),a(),r("ngIf",n.mode==="indeterminate"))},dependencies:[z,N,Q,O,V,g],encapsulation:2,changeDetection:0})}return e})(),fe=(()=>{class e{static \u0275fac=function(i){return new(i||e)};static \u0275mod=x({type:e});static \u0275inj=w({imports:[ee,g,g]})}return e})();export{ee as a,fe as b};
