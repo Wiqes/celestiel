@@ -1,1 +1,44 @@
-import{Ka as E,T as F,X as d,Z as f,a as b,aa as h,x as l}from"./41.js";import{Z as a,ea as o,hb as u,ia as r,jb as m,wc as p,ya as c}from"./34.js";var O=(()=>{class s extends E{pFocusTrapDisabled=!1;platformId=a(c);document=a(b);firstHiddenFocusableElement;lastHiddenFocusableElement;ngOnInit(){super.ngOnInit(),l(this.platformId)&&!this.pFocusTrapDisabled&&!this.firstHiddenFocusableElement&&!this.lastHiddenFocusableElement&&this.createHiddenFocusableElements()}ngOnChanges(e){super.ngOnChanges(e),e.pFocusTrapDisabled&&l(this.platformId)&&(e.pFocusTrapDisabled.currentValue?this.removeHiddenFocusableElements():this.createHiddenFocusableElements())}removeHiddenFocusableElements(){this.firstHiddenFocusableElement&&this.firstHiddenFocusableElement.parentNode&&this.firstHiddenFocusableElement.parentNode.removeChild(this.firstHiddenFocusableElement),this.lastHiddenFocusableElement&&this.lastHiddenFocusableElement.parentNode&&this.lastHiddenFocusableElement.parentNode.removeChild(this.lastHiddenFocusableElement)}getComputedSelector(e){return`:not(.p-hidden-focusable):not([data-p-hidden-focusable="true"])${e??""}`}createHiddenFocusableElements(){let e="0",n=t=>F("span",{class:"p-hidden-accessible p-hidden-focusable",tabindex:e,role:"presentation","aria-hidden":!0,"data-p-hidden-accessible":!0,"data-p-hidden-focusable":!0,onFocus:t?.bind(this)});this.firstHiddenFocusableElement=n(this.onFirstHiddenElementFocus),this.lastHiddenFocusableElement=n(this.onLastHiddenElementFocus),this.firstHiddenFocusableElement.setAttribute("data-pc-section","firstfocusableelement"),this.lastHiddenFocusableElement.setAttribute("data-pc-section","lastfocusableelement"),this.el.nativeElement.prepend(this.firstHiddenFocusableElement),this.el.nativeElement.append(this.lastHiddenFocusableElement)}onFirstHiddenElementFocus(e){let{currentTarget:n,relatedTarget:t}=e,i=t===this.lastHiddenFocusableElement||!this.el.nativeElement?.contains(t)?f(n.parentElement,":not(.p-hidden-focusable)"):this.lastHiddenFocusableElement;d(i)}onLastHiddenElementFocus(e){let{currentTarget:n,relatedTarget:t}=e,i=t===this.firstHiddenFocusableElement||!this.el.nativeElement?.contains(t)?h(n.parentElement,":not(.p-hidden-focusable)"):this.firstHiddenFocusableElement;d(i)}static \u0275fac=(()=>{let e;return function(t){return(e||(e=r(s)))(t||s)}})();static \u0275dir=u({type:s,selectors:[["","pFocusTrap",""]],inputs:{pFocusTrapDisabled:[2,"pFocusTrapDisabled","pFocusTrapDisabled",p]},features:[m,o]})}return s})();export{O as a};
+import{Fa as h,Ia as I,La as v,v as y}from"./51.js";import{Ob as u,Pb as m,T as s,U as c,Z as r,dc as g,fb as l,gb as a,ia as o,jb as f,ub as p,wb as d}from"./32.js";var D=["*"],$=({dt:e})=>`
+.p-iconfield {
+    position: relative;
+    display: block;
+}
+
+.p-inputicon {
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * (${e("icon.size")} / 2));
+    color: ${e("iconfield.icon.color")};
+    line-height: 1;
+}
+
+.p-iconfield .p-inputicon:first-child {
+    inset-inline-start: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputicon:last-child {
+    inset-inline-end: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputtext:not(:first-child) {
+    padding-inline-start: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+    padding-inline-end: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield:has(.p-inputfield-sm) .p-inputicon {
+    font-size: ${e("form.field.sm.font.size")};
+    width: ${e("form.field.sm.font.size")};
+    height: ${e("form.field.sm.font.size")};
+    margin-top: calc(-1 * (${e("form.field.sm.font.size")} / 2));
+}
+
+.p-iconfield:has(.p-inputfield-lg) .p-inputicon {
+    font-size: ${e("form.field.lg.font.size")};
+    width: ${e("form.field.lg.font.size")};
+    height: ${e("form.field.lg.font.size")};
+    margin-top: calc(-1 * (${e("form.field.lg.font.size")} / 2));
+}
+`,j={root:"p-iconfield"},C=(()=>{class e extends I{name="iconfield";theme=$;classes=j;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})();var B=(()=>{class e extends v{iconPosition="left";get _styleClass(){return this.styleClass}styleClass;_componentStyle=r(C);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-iconfield"],["p-iconField"],["p-icon-field"]],hostAttrs:[1,"p-iconfield"],hostVars:6,hostBindings:function(t,n){t&2&&(d(n._styleClass),p("p-iconfield-left",n.iconPosition==="left")("p-iconfield-right",n.iconPosition==="right"))},inputs:{iconPosition:"iconPosition",styleClass:"styleClass"},features:[g([C]),f],ngContentSelectors:D,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y],encapsulation:2,changeDetection:0})}return e})(),q=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[B]})}return e})();var z=["*"],x={root:"p-inputicon"},F=(()=>{class e extends I{name="inputicon";classes=x;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})(),P=(()=>{class e extends v{styleClass;get hostClasses(){return this.styleClass}_componentStyle=r(F);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-inputicon"],["p-inputIcon"]],hostVars:4,hostBindings:function(t,n){t&2&&(d(n.hostClasses),p("p-inputicon",!0))},inputs:{styleClass:"styleClass"},features:[g([F]),f],ngContentSelectors:z,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y,h],encapsulation:2,changeDetection:0})}return e})(),ie=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[P,h,h]})}return e})();export{B as a,q as b,P as c,ie as d};
