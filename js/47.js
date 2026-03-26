@@ -1,1 +1,33 @@
-import"./1.js";import{b as T}from"./2.js";import"./3.js";import"./6.js";import{d as H,f as S}from"./7.js";import{e as k}from"./23.js";import"./40.js";import"./46.js";import{c as b,d as A}from"./12.js";import"./25.js";import"./48.js";import"./50.js";import{Cb as n,Db as o,Ib as x,Mb as l,Nb as g,Ta as p,Yb as h,Z as i,fa as u,fb as _,ga as f,kb as C,kc as m,lc as s,sb as a,yb as v,yc as y}from"./33.js";function M(t,c){if(t&1){let e=x();n(0,"div",0)(1,"div"),h(2,"1.1.2"),o(),n(3,"p-button",1),m(4,"translate"),l("onClick",function(){u(e);let d=g();return f(d.router.navigate(["admin"]))}),o()()}t&2&&(p(3),a("label",s(4,1,"Admin")))}var w=class t{router=i(S);route=i(H);authService=i(T);isAdmin=y(()=>this.authService.hasRole("admin"));static \u0275fac=function(e){return new(e||t)};static \u0275cmp=_({type:t,selectors:[["app-home"]],decls:3,vars:4,consts:[[1,"eucael-version"],["icon","pi pi-arrow-right","severity","success",3,"onClick","label"]],template:function(e,r){e&1&&(C(0,M,5,3,"div",0),n(1,"p-button",1),m(2,"translate"),l("onClick",function(){return r.router.navigate(["profile"])}),o()),e&2&&(v(r.isAdmin()?0:-1),p(),a("label",s(2,2,"Profile")))},dependencies:[k,A,b],styles:["[_nghost-%COMP%]{display:flex;align-items:center;justify-content:flex-end;padding:58px 20px}.eucael-version[_ngcontent-%COMP%]{font-family:Uncial Antiqua,cursive;font-size:18px;color:#34f5dd;top:120px;left:20px;position:absolute;display:flex;flex-direction:column;gap:8px}"]})};export{w as HomeComponent};
+import{Ia as m,La as u,oa as d}from"./50.js";import{Ob as c,Pb as l,T as a,dc as p,fb as s,ia as o,jb as r,vc as f}from"./34.js";var g=["*"],b=`
+.p-icon {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.p-icon-spin {
+    -webkit-animation: p-icon-spin 2s infinite linear;
+    animation: p-icon-spin 2s infinite linear;
+}
+
+@-webkit-keyframes p-icon-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes p-icon-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+`,y=(()=>{class e extends m{name="baseicon";inlineStyles=b;static \u0275fac=(()=>{let t;return function(n){return(t||(t=o(e)))(n||e)}})();static \u0275prov=a({token:e,factory:e.\u0275fac})}return e})();var x=(()=>{class e extends u{label;spin=!1;styleClass;role;ariaLabel;ariaHidden;ngOnInit(){super.ngOnInit(),this.getAttributes()}getAttributes(){let t=d(this.label);this.role=t?void 0:"img",this.ariaLabel=t?void 0:this.label,this.ariaHidden=t}getClassNames(){return`p-icon ${this.styleClass?this.styleClass+" ":""}${this.spin?"p-icon-spin":""}`}static \u0275fac=(()=>{let t;return function(n){return(t||(t=o(e)))(n||e)}})();static \u0275cmp=s({type:e,selectors:[["ng-component"]],hostAttrs:[1,"p-component","p-iconwrapper"],inputs:{label:"label",spin:[2,"spin","spin",f],styleClass:"styleClass"},features:[p([y]),r],ngContentSelectors:g,decls:1,vars:0,template:function(i,n){i&1&&(c(),l(0))},encapsulation:2,changeDetection:0})}return e})();export{x as a};
