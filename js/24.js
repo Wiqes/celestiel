@@ -1,1 +1,44 @@
-import{a as c}from"./47.js";import{E as U}from"./50.js";import{A as n,T as a,Z as s,a as d,b as h,o as v,s as g,ua as o,yc as i}from"./31.js";var p=class t{token=o(null);isRefreshing=o(!1);static \u0275fac=function(e){return new(e||t)};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};var f=class t{decode(r){try{let e=atob(r),l=new Uint8Array(e.length);for(let u=0;u<e.length;u++)l[u]=e.charCodeAt(u);return new TextDecoder("utf-8").decode(l)}catch{return""}}static \u0275fac=function(e){return new(e||t)};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};var m=class t{http=s(U);authTokenStateService=s(p);base64Service=s(f);token=i(()=>this.authTokenStateService.token());searchUsers(r){return this.http.get(`${c.API_URL}/users/search`,{params:{name:r}}).pipe(n(e=>{throw console.error("Error searching users:",e.status),new Error("Failed to search users")}))}getUserData(){return this.token()?this.http.get(`${c.API_URL}/users/me`).pipe(n(e=>{throw console.error("Error fetching user data:",e.status),new Error("Failed to fetch user data")})):v(null)}getUserId(){return this.getUserData().pipe(g(r=>r?.id||""),n(()=>v("")))}getAnimals(){return this.http.get(`${c.API_URL}/animals`).pipe(n(r=>{throw console.error("Error fetching animals:",r.status),new Error("Failed to fetch animals")}))}getColors(){return this.http.get(`${c.API_URL}/colors`).pipe(n(r=>{throw console.error("Error fetching colors:",r.status),new Error("Failed to fetch colors")}))}getProfileByUserId(r){return this.http.get(`${c.API_URL}/profiles/${r}`).pipe(n(e=>{throw console.error("Error fetching profile by user ID:",e.status),new Error("Failed to fetch profile by user ID")}))}static \u0275fac=function(e){return new(e||t)};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};var b=class t{dataAccessService=s(m);authTokenStateService=s(p);base64Service=s(f);token=i(()=>this.authTokenStateService.token());user=o(null);animals=o([]);isDataLoading=o(!1);tokenAvatarUrl=o(null);tokenUserId=o(null);profile=i(()=>this.user()?.profile);avatarUrl=i(()=>this.user()?.avatarUrl||this.tokenAvatarUrl()||"");userId=i(()=>this.user()?.id||this.tokenUserId()||"");displayName=i(()=>this.profile()?.name||this.profile()?.email||"");setProfileFromToken(r){if(r){let e=JSON.parse(this.base64Service.decode(r.split(".")[1]));this.tokenAvatarUrl.set(e?.avatarUrl||null),this.tokenUserId.set(e?.sub||null)}}addAnimalsDataToState(r=[]){this.animals.set(r)}addUserDataToState(){this.user()||this.isDataLoading()||(this.isDataLoading.set(!0),this.dataAccessService.getUserData().subscribe({next:r=>{this.user.set(r)},error:()=>this.isDataLoading.set(!1),complete:()=>this.isDataLoading.set(!1)}))}updateUserAvatar(r){let e=this.user();if(e){let l=h(d({},e),{avatarUrl:r});this.user.set(l)}}updateUserProfile(r){let e=this.user();if(e&&e.profile){let l=h(d({},e),{profile:d(d({},e.profile),r)});this.user.set(l)}}static \u0275fac=function(e){return new(e||t)};static \u0275prov=a({token:t,factory:t.\u0275fac,providedIn:"root"})};export{p as a,m as b,b as c};
+import{Fa as h,Ia as I,La as v,v as y}from"./51.js";import{Ob as u,Pb as m,T as s,U as c,Z as r,dc as g,fb as l,gb as a,ia as o,jb as f,ub as p,wb as d}from"./32.js";var D=["*"],$=({dt:e})=>`
+.p-iconfield {
+    position: relative;
+    display: block;
+}
+
+.p-inputicon {
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * (${e("icon.size")} / 2));
+    color: ${e("iconfield.icon.color")};
+    line-height: 1;
+}
+
+.p-iconfield .p-inputicon:first-child {
+    inset-inline-start: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputicon:last-child {
+    inset-inline-end: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputtext:not(:first-child) {
+    padding-inline-start: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+    padding-inline-end: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield:has(.p-inputfield-sm) .p-inputicon {
+    font-size: ${e("form.field.sm.font.size")};
+    width: ${e("form.field.sm.font.size")};
+    height: ${e("form.field.sm.font.size")};
+    margin-top: calc(-1 * (${e("form.field.sm.font.size")} / 2));
+}
+
+.p-iconfield:has(.p-inputfield-lg) .p-inputicon {
+    font-size: ${e("form.field.lg.font.size")};
+    width: ${e("form.field.lg.font.size")};
+    height: ${e("form.field.lg.font.size")};
+    margin-top: calc(-1 * (${e("form.field.lg.font.size")} / 2));
+}
+`,j={root:"p-iconfield"},C=(()=>{class e extends I{name="iconfield";theme=$;classes=j;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})();var B=(()=>{class e extends v{iconPosition="left";get _styleClass(){return this.styleClass}styleClass;_componentStyle=r(C);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-iconfield"],["p-iconField"],["p-icon-field"]],hostAttrs:[1,"p-iconfield"],hostVars:6,hostBindings:function(t,n){t&2&&(d(n._styleClass),p("p-iconfield-left",n.iconPosition==="left")("p-iconfield-right",n.iconPosition==="right"))},inputs:{iconPosition:"iconPosition",styleClass:"styleClass"},features:[g([C]),f],ngContentSelectors:D,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y],encapsulation:2,changeDetection:0})}return e})(),q=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[B]})}return e})();var z=["*"],x={root:"p-inputicon"},F=(()=>{class e extends I{name="inputicon";classes=x;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})(),P=(()=>{class e extends v{styleClass;get hostClasses(){return this.styleClass}_componentStyle=r(F);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-inputicon"],["p-inputIcon"]],hostVars:4,hostBindings:function(t,n){t&2&&(d(n.hostClasses),p("p-inputicon",!0))},inputs:{styleClass:"styleClass"},features:[g([F]),f],ngContentSelectors:z,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y,h],encapsulation:2,changeDetection:0})}return e})(),ie=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[P,h,h]})}return e})();export{B as a,q as b,P as c,ie as d};
