@@ -1,33 +1,44 @@
-import{Ia as m,La as u,oa as d}from"./50.js";import{Ob as c,Pb as l,T as a,dc as p,fb as s,ia as o,jb as r,vc as f}from"./32.js";var g=["*"],b=`
-.p-icon {
-    display: inline-block;
-    vertical-align: baseline;
+import{Fa as h,Ia as I,La as v,v as y}from"./16.js";import{Ob as u,Pb as m,T as s,U as c,Z as r,dc as g,fb as l,gb as a,ia as o,jb as f,ub as p,wb as d}from"./26.js";var D=["*"],$=({dt:e})=>`
+.p-iconfield {
+    position: relative;
+    display: block;
 }
 
-.p-icon-spin {
-    -webkit-animation: p-icon-spin 2s infinite linear;
-    animation: p-icon-spin 2s infinite linear;
+.p-inputicon {
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * (${e("icon.size")} / 2));
+    color: ${e("iconfield.icon.color")};
+    line-height: 1;
 }
 
-@-webkit-keyframes p-icon-spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg);
-    }
+.p-iconfield .p-inputicon:first-child {
+    inset-inline-start: ${e("form.field.padding.x")};
 }
 
-@keyframes p-icon-spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg);
-    }
+.p-iconfield .p-inputicon:last-child {
+    inset-inline-end: ${e("form.field.padding.x")};
 }
-`,y=(()=>{class e extends m{name="baseicon";inlineStyles=b;static \u0275fac=(()=>{let t;return function(n){return(t||(t=o(e)))(n||e)}})();static \u0275prov=a({token:e,factory:e.\u0275fac})}return e})();var x=(()=>{class e extends u{label;spin=!1;styleClass;role;ariaLabel;ariaHidden;ngOnInit(){super.ngOnInit(),this.getAttributes()}getAttributes(){let t=d(this.label);this.role=t?void 0:"img",this.ariaLabel=t?void 0:this.label,this.ariaHidden=t}getClassNames(){return`p-icon ${this.styleClass?this.styleClass+" ":""}${this.spin?"p-icon-spin":""}`}static \u0275fac=(()=>{let t;return function(n){return(t||(t=o(e)))(n||e)}})();static \u0275cmp=s({type:e,selectors:[["ng-component"]],hostAttrs:[1,"p-component","p-iconwrapper"],inputs:{label:"label",spin:[2,"spin","spin",f],styleClass:"styleClass"},features:[p([y]),r],ngContentSelectors:g,decls:1,vars:0,template:function(i,n){i&1&&(c(),l(0))},encapsulation:2,changeDetection:0})}return e})();export{x as a};
+
+.p-iconfield .p-inputtext:not(:first-child) {
+    padding-inline-start: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+    padding-inline-end: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield:has(.p-inputfield-sm) .p-inputicon {
+    font-size: ${e("form.field.sm.font.size")};
+    width: ${e("form.field.sm.font.size")};
+    height: ${e("form.field.sm.font.size")};
+    margin-top: calc(-1 * (${e("form.field.sm.font.size")} / 2));
+}
+
+.p-iconfield:has(.p-inputfield-lg) .p-inputicon {
+    font-size: ${e("form.field.lg.font.size")};
+    width: ${e("form.field.lg.font.size")};
+    height: ${e("form.field.lg.font.size")};
+    margin-top: calc(-1 * (${e("form.field.lg.font.size")} / 2));
+}
+`,j={root:"p-iconfield"},C=(()=>{class e extends I{name="iconfield";theme=$;classes=j;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})();var B=(()=>{class e extends v{iconPosition="left";get _styleClass(){return this.styleClass}styleClass;_componentStyle=r(C);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-iconfield"],["p-iconField"],["p-icon-field"]],hostAttrs:[1,"p-iconfield"],hostVars:6,hostBindings:function(t,n){t&2&&(d(n._styleClass),p("p-iconfield-left",n.iconPosition==="left")("p-iconfield-right",n.iconPosition==="right"))},inputs:{iconPosition:"iconPosition",styleClass:"styleClass"},features:[g([C]),f],ngContentSelectors:D,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y],encapsulation:2,changeDetection:0})}return e})(),q=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[B]})}return e})();var z=["*"],x={root:"p-inputicon"},F=(()=>{class e extends I{name="inputicon";classes=x;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})(),P=(()=>{class e extends v{styleClass;get hostClasses(){return this.styleClass}_componentStyle=r(F);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-inputicon"],["p-inputIcon"]],hostVars:4,hostBindings:function(t,n){t&2&&(d(n.hostClasses),p("p-inputicon",!0))},inputs:{styleClass:"styleClass"},features:[g([F]),f],ngContentSelectors:z,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y,h],encapsulation:2,changeDetection:0})}return e})(),ie=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[P,h,h]})}return e})();export{B as a,q as b,P as c,ie as d};
