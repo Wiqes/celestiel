@@ -1,1 +1,44 @@
-import{T,a as m,b,k as B,l as h}from"./25.js";var f="char1",y="#ff6b35",N={RAT:{id:f,name:"Eucael",size:1,color:y},CAT:{id:"char2",name:"Aragog",size:24,color:"#0088ff"},BEAR:{id:"char3",name:"Anansi",size:26,color:"#0088ff"},HORSE:{id:"char4",name:"Arachne",size:27,color:"#0088ff"},GIRAFFE:{id:"char5",name:"Ungoliant",size:28,color:"#0088ff"},WOLF:{id:"char6",name:"Lolth",size:29,color:"#0088ff"},EAGLE:{id:"char7",name:"Tsuchigumo",size:30,color:"#0088ff"},SERPENT:{id:"char8",name:"Jor\u014Dgumo",size:31,color:"#0088ff"},A:{id:"char9",name:"Shelob",size:32,color:"#0088ff"},B:{id:"char10",name:"Aragog",size:33,color:"#0088ff"},C:{id:"char11",name:"Anansi",size:34,color:"#0088ff"},D:{id:"char12",name:"Arachne",size:18,color:"#0088ff"},E:{id:"char13",name:"Ungoliant",size:19,color:"#0088ff"},F:{id:"char14",name:"Lolth",size:20,color:"#0088ff"},G:{id:"char15",name:"Tsuchigumo",size:21,color:"#0088ff"},H:{id:"char16",name:"Jor\u014Dgumo",size:22,color:"#0088ff"},I:{id:"char17",name:"Atlach-Nacha",size:23,color:"#0088ff"},J:{id:"char18",name:"Kumonga",size:24,color:"#0088ff"},K:{id:"char19",name:"Uttu",size:25,color:"#0088ff"}};var A=a=>{let e=a<100?300:a<1e3?a*3:3e3;return Object.freeze({minX:-e,maxX:e,minZ:-e,maxZ:e})},k=Object.freeze({minX:-3e3,maxX:3e3,minZ:-3e3,maxZ:3e3});var H=.9,P="battleBaseScale",R="battleSpeedScale",O="battleVisualScale",L=3;function Z(a){return a/L}function x(a){return a.userData[P]??1}function F(a){return a.userData[R]??x(a)}function X(a){return a.userData[O]??x(a)}var v=0,_=8;function w(a){return a<1100?1e3:1001}function p(a,e){return Math.random()*(e-a)+a}function I(a,e){let i=A(e),t=[];for(let n=0;n<a;n++){let o=0,r;do r={x:p(i.minX,i.maxX),y:v,z:p(i.minZ,i.maxZ)},o++;while(o<100&&t.some(s=>Math.hypot(r.x-s.x,r.z-s.z)<_));t.push(r)}return t}var j=40;function D(a,e){let i=A(e),t=[];for(let n of a){let o=0,r;do r={x:p(i.minX,i.maxX),y:v,z:p(i.minZ,i.maxZ)},o++;while(o<100&&(Math.hypot(r.x-n.x,r.z-n.z)<j||t.some(s=>Math.hypot(r.x-s.x,r.z-s.z)<_)));t.push(r)}return t}var z=1e3,C=3e3,S=new B,g=class a{battleStateSubject=new h(null);battleState$=this.battleStateSubject.asObservable();playerSpawnProtection$=S.asObservable();actionSubject=new h(null);action$=this.actionSubject.asObservable();pendingComplete=!1;lastAttackTime=new Map;battleStartTime=null;revivalStartTime=null;startBattle(e,i){if(i.length===0)throw new Error("Must have at least one enemy");let t={x:0,y:v,z:0},n=Math.max(...i.map(s=>s.size)),o=I(i.length,n),r={team1:[b(m({},e),{isAlive:!0,position:t})],team2:i.map((s,l)=>b(m({},s),{isAlive:!0,position:o[l]})),actions:[],winner:null,isComplete:!1};this.battleStartTime=Date.now(),this.battleStateSubject.next(r),S.next()}isPlayerSpawnProtected(){return this.battleStartTime!==null&&Date.now()-this.battleStartTime<C||this.revivalStartTime!==null&&Date.now()-this.revivalStartTime<C}resolveShieldOverlap(e,i){if(this.isPlayerSpawnProtected())return!1;let t=this.battleStateSubject.value;if(!t||t.isComplete)return!1;let n=t.team1[0],o=t.team2.find(s=>s.id===e);if(!n?.isAlive||!o?.isAlive)return!1;let r=this.resolveCombat(t,n,o,i);return r?(r!==n&&(this.pendingComplete=!0),this.battleStateSubject.next(m({},t)),!0):!1}resolveEnemyShieldOverlap(e,i){let t=this.battleStateSubject.value;if(!t)return!1;let n=t.team2.find(s=>s.id===e),o=t.team2.find(s=>s.id===i);return!n?.isAlive||!o?.isAlive||!this.resolveCombat(t,n,o)?!1:(this.battleStateSubject.next(m({},t)),!0)}finalizeIfComplete(){if(!this.pendingComplete)return;this.pendingComplete=!1,this.endBattle();let e=this.battleStateSubject.value;e&&this.battleStateSubject.next(m({},e))}endBattle(){let e=this.battleStateSubject.value;if(!e)return;if(e.isComplete=!0,e.team1[0]?.isAlive)e.winner=e.team1[0].name;else{let t=e.team2.filter(n=>n.isAlive);e.winner=t.length>0?t[0].name:null}}processPostAnimationRevives(){let e=this.battleStateSubject.value;if(!e||e.isComplete)return;if(this.reviveAllIfAllEnemiesBigger(e)){this.battleStateSubject.next(m({},e));return}e.team1[0]?.isAlive&&e.team2.every(t=>!t.isAlive)&&(this.pendingComplete=!0)}resetBattle(){this.pendingComplete=!1,this.battleStartTime=null,this.lastAttackTime.clear(),this.battleStateSubject.next(null),this.actionSubject.next(null)}reviveAllIfAllEnemiesBigger(e){let i=e.team1[0];if(!i?.isAlive)return!1;let t=e.team2.filter(l=>l.isAlive);if(t.length===0||!t.every(l=>l.size>i.size))return!1;let n=e.team2.filter(l=>!l.isAlive);if(n.length===0)return!1;let o=n.map(l=>m({},l.position)),r=Math.max(...e.team2.map(l=>l.size)),s=D(o,r);return n.forEach((l,c)=>{l.isAlive=!0,l.size=Math.ceil(i.size*.6),l.position=s[c],this.lastAttackTime.delete(l.id)}),this.revivalStartTime=Date.now(),S.next(),!0}resolveCombat(e,i,t,n){let o=Date.now(),r=this.lastAttackTime.get(i.id)??0,s=this.lastAttackTime.get(t.id)??0;if(o-r<z||o-s<z)return null;let l=(n??i.size)>=t.size,c=l?i:t,d=l?t:i;this.lastAttackTime.set(c.id,o);let E={attackerId:c.id,defenderId:d.id,type:"attack",timestamp:o};e.actions.push(E),this.actionSubject.next(E),d.isAlive=!1;let u=w(c.id===f?c.size:e.team1[0]?.size??c.size);if(c.size<u){if(c.id===f)return c.size+=1,c.size>u&&(c.size=u),c;c.size+=d.size,c.size>u&&(c.size=u)}return c}static \u0275fac=function(i){return new(i||a)};static \u0275prov=T({token:a,factory:a.\u0275fac,providedIn:"root"})};export{k as a,H as b,P as c,R as d,O as e,Z as f,x as g,F as h,X as i,f as j,y as k,N as l,g as m};
+import{Fa as h,Ia as I,La as v,v as y}from"./15.js";import{Ob as u,Pb as m,T as s,U as c,Z as r,dc as g,fb as l,gb as a,ia as o,jb as f,ub as p,wb as d}from"./26.js";var D=["*"],$=({dt:e})=>`
+.p-iconfield {
+    position: relative;
+    display: block;
+}
+
+.p-inputicon {
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * (${e("icon.size")} / 2));
+    color: ${e("iconfield.icon.color")};
+    line-height: 1;
+}
+
+.p-iconfield .p-inputicon:first-child {
+    inset-inline-start: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputicon:last-child {
+    inset-inline-end: ${e("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputtext:not(:first-child) {
+    padding-inline-start: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+    padding-inline-end: calc((${e("form.field.padding.x")} * 2) + ${e("icon.size")});
+}
+
+.p-iconfield:has(.p-inputfield-sm) .p-inputicon {
+    font-size: ${e("form.field.sm.font.size")};
+    width: ${e("form.field.sm.font.size")};
+    height: ${e("form.field.sm.font.size")};
+    margin-top: calc(-1 * (${e("form.field.sm.font.size")} / 2));
+}
+
+.p-iconfield:has(.p-inputfield-lg) .p-inputicon {
+    font-size: ${e("form.field.lg.font.size")};
+    width: ${e("form.field.lg.font.size")};
+    height: ${e("form.field.lg.font.size")};
+    margin-top: calc(-1 * (${e("form.field.lg.font.size")} / 2));
+}
+`,j={root:"p-iconfield"},C=(()=>{class e extends I{name="iconfield";theme=$;classes=j;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})();var B=(()=>{class e extends v{iconPosition="left";get _styleClass(){return this.styleClass}styleClass;_componentStyle=r(C);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-iconfield"],["p-iconField"],["p-icon-field"]],hostAttrs:[1,"p-iconfield"],hostVars:6,hostBindings:function(t,n){t&2&&(d(n._styleClass),p("p-iconfield-left",n.iconPosition==="left")("p-iconfield-right",n.iconPosition==="right"))},inputs:{iconPosition:"iconPosition",styleClass:"styleClass"},features:[g([C]),f],ngContentSelectors:D,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y],encapsulation:2,changeDetection:0})}return e})(),q=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[B]})}return e})();var z=["*"],x={root:"p-inputicon"},F=(()=>{class e extends I{name="inputicon";classes=x;static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275prov=s({token:e,factory:e.\u0275fac})}return e})(),P=(()=>{class e extends v{styleClass;get hostClasses(){return this.styleClass}_componentStyle=r(F);static \u0275fac=(()=>{let i;return function(n){return(i||(i=o(e)))(n||e)}})();static \u0275cmp=l({type:e,selectors:[["p-inputicon"],["p-inputIcon"]],hostVars:4,hostBindings:function(t,n){t&2&&(d(n.hostClasses),p("p-inputicon",!0))},inputs:{styleClass:"styleClass"},features:[g([F]),f],ngContentSelectors:z,decls:1,vars:0,template:function(t,n){t&1&&(u(),m(0))},dependencies:[y,h],encapsulation:2,changeDetection:0})}return e})(),ie=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275mod=a({type:e});static \u0275inj=c({imports:[P,h,h]})}return e})();export{B as a,q as b,P as c,ie as d};
