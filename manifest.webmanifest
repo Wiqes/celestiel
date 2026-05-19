@@ -1,7 +1,7 @@
 {
-  "name": "Fading Love - Dark PvP RPG",
-  "short_name": "Fading Love",
-  "description": "Fading Love - Deploy five mystical spiders to harvest Shadow, create Dark Elves, and consume their fading love energy to evolve and dominate the arena in this dark PvP RPG.",
+  "name": "Jael.io - Dark RPG",
+  "short_name": "Jael.io",
+  "description": "Jael.io - Deploy mystical spiders to harvest Shadow, create Dark Elves, and consume their energy to evolve and dominate in this dark RPG.",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
