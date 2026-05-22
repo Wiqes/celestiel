@@ -1,7 +1,7 @@
 {
-  "name": "Jael.io - Dark RPG",
-  "short_name": "Jael.io",
-  "description": "Jael.io - Deploy mystical spiders to harvest Shadow, create Dark Elves, and consume their energy to evolve and dominate in this dark RPG.",
+  "name": "Xael.io - Dark RPG",
+  "short_name": "Xael.io",
+  "description": "Xael.io - Deploy mystical spiders to harvest Shadow, create Dark Elves, and consume their energy to evolve and dominate in this dark RPG.",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
