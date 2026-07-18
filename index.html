@@ -491,7 +491,11 @@
           gap: 40px;
         "
       >
-        <a href="#home" style="display: flex; align-items: center; gap: 2px; color: #eff5f0">
+        <a
+          href="#"
+          class="logo"
+          style="display: flex; align-items: center; gap: 2px; color: #eff5f0"
+        >
           <svg
             width="44"
             height="44"
@@ -817,6 +821,7 @@
 
     <header
       id="home"
+      class="hero"
       data-screen-label="Hero"
       style="
         position: relative;
@@ -4311,6 +4316,47 @@
             document.getElementById('formSent').hidden = false;
           });
         }
+
+        // Logo click handler for camera flash and thunder effect
+        document.addEventListener('DOMContentLoaded', function () {
+          //Logo click handler for camera flash and thunder effect
+          const heroElement = document.querySelector('.hero');
+          const logoElement = document.querySelector('.logo');
+          const thunderAudio = new Audio(
+            new URL('assets/sounds/thunder.mp3', document.location.href).href,
+          );
+          thunderAudio.preload = 'auto';
+          thunderAudio.volume = 0.7;
+
+          if (logoElement) {
+            logoElement.addEventListener('click', function (e) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+
+              if (heroElement) {
+                // Remove existing animation class if present
+                heroElement.classList.remove('flash-trigger');
+
+                // Force reflow to reset animation
+                void heroElement.offsetWidth;
+
+                // Add animation class to trigger the ::before animation
+                heroElement.classList.add('flash-trigger');
+
+                // Remove the class after animation completes (3 seconds)
+                setTimeout(() => {
+                  heroElement.classList.remove('flash-trigger');
+                }, 3000);
+              }
+
+              // Play thunder sound
+              thunderAudio.currentTime = 0; // Reset audio to beginning
+              thunderAudio.play().catch((error) => {
+                console.log('Audio playback failed:', error);
+              });
+            });
+          }
+        });
       })();
     </script>
   </body>
