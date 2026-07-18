@@ -100,6 +100,32 @@
       textarea::placeholder {
         color: #65726b;
       }
+      .hero {
+        opacity: 1;
+      }
+      .hero.flash-trigger {
+        animation: cameraFlash 3s ease-in-out 0.5s 1;
+      }
+      @keyframes cameraFlash {
+        0% {
+          opacity: 0.1;
+        }
+        10% {
+          opacity: 0.4;
+        }
+        15% {
+          opacity: 0.1;
+        }
+        25% {
+          opacity: 0.4;
+        }
+        30% {
+          opacity: 0.1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
       @keyframes wordUp {
         from {
           transform: translateY(115%);
@@ -4340,7 +4366,7 @@
                 // Force reflow to reset animation
                 void heroElement.offsetWidth;
 
-                // Add animation class to trigger the ::before animation
+                // Add animation class to trigger the flash animation
                 heroElement.classList.add('flash-trigger');
 
                 // Remove the class after animation completes (3 seconds)
