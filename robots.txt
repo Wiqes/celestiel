@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.eucael.com/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1
